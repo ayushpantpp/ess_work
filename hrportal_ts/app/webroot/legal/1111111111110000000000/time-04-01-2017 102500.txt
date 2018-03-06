@@ -1,0 +1,62 @@
+24oct
+Working on C&CA document,studying the flow chart of C&CA,
+review the screen shot of parameter set up and governance,
+meeting with Rohan Arora on skype to discuss the functionality.
+
+25oct
+Working Board Management(Document understanding),
+Working on Job Code Master,
+Create the schedule sheet for Compliance and QA
+
+26oct
+Working on Job Code Master in Board Management,
+working on request receiving in Board Management
+
+27oct
+working on request receiving and request forwarding in Board Management
+
+28oct
+Diwali Celebration ,
+Creating points to discuss with Rohan Arora for Board Management. 
+
+29,30 off day
+
+31oct off day
+1nov off day
+2nov leave 
+
+3nov
+Working on Board Management (Review Document for further point)/ Done.
+Meeting with Mukul Sir to update about all works./Done
+
+4nov
+Working on C&CA document,studying the flow chart of C&CA /Done.
+Meeting with Rohan and Rahul Sir to discuss the C&CA/Done.
+Creating the Effort Estimation for C&CA / Done
+
+05nov
+Working on Request receive in Board Management,
+Working on check list Sheet(update) and mail to Rahul sir,
+Working on upload csv files and import data in database for data migration 
+
+06 off day
+
+7nov
+Working on Request Receiving in Board Management 
+
+8nov
+1.Working on Listing Request receive in Board Management,
+
+2.Create Db table for request receive 
+
+3. working insert functionality in request receive 
+
+
+
+9nov
+Working on Listing Request Forwarding (Desgin)in Board Management,
+Create Db table for request forward 
+working on Request Forwarding (form Design)
+
+10 nov
+Creating again work status report in exl sheet,

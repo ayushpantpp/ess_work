@@ -1,0 +1,1748 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# No version information was available in the source files.
+#
+#, fuzzy
+msgid   ""
+msgstr  "Project-Id-Version: PROJECT VERSION\n"
+        "POT-Creation-Date: 2013-06-04 12:00+0200\n"
+        "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+        "Last-Translator: cake17 <gvmail76-inscription@yahoo.fr>\n"
+        "Language-Team: \n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
+        "Plural-Forms: nplurals=2; plural=n>1;\n"
+
+#: views/users/dashboard.ctp
+msgid   "Important Shortcuts"
+msgstr  "महत्वपूर्ण शॉर्टकट"
+
+#: views/users/dashboard.ctp
+msgid   "Upcoming Events"
+msgstr  "आगामी कार्यक्रम"
+
+#: views/users/myprofile.ctp
+msgid   "User Report"
+msgstr  "उपयोगकर्ता की रिपोर्ट "
+
+#: views/users/myprofile.ctp
+msgid   "User Profile"
+msgstr  "उपयोगकर्ता प्रोफ़ाइल"
+
+#: views/helpers/simple_graph.php:79
+msgid   "Starting %sms into the request, taking %sms"
+msgstr  "Début en %sms de la requête, et prend %sms"
+
+#: views/users/myprofile.ctp
+msgid   "User Activity Report"
+msgstr  "उपयोगकर्ता गतिविधि रिपोर्ट"
+
+#: views/users/myprofile.ctp
+msgid   "Software Engineer"
+msgstr  "सॉफ्टवेयर इंजीनियर"
+
+#: views/users/myprofile.ctp
+msgid   "Reporting Manager :"
+msgstr  "रिपोर्टिंग प्रबंधक :"
+
+#: views/users/myprofile.ctp
+msgid   "Joining Date"
+msgstr  "कार्यग्रहण तिथि"
+
+#: views/users/myprofile.ctp
+msgid   "Date of Birth"
+msgstr  "जन्मतिथि"
+
+#: views/users/myprofile.ctp
+msgid   "Blood Group"
+msgstr  "ब्लड ग्रुपट"
+
+#: views/users/myprofile.ctp
+#: views/users/myprofile.ctp:1311
+msgid   "Personal Information"
+msgstr  "व्यक्तिगत जानकारी"
+
+#: views/users/myprofile.ctp
+msgid   "Contact Information"
+msgstr  "संपर्क जानकारी"
+
+#: views/users/myprofile.ctp
+msgid   "Address"
+msgstr  "पता"
+
+#: views/users/myprofile.ctp
+msgid   "Title"
+msgstr  "शीर्षक"
+
+#: views/users/myprofile.ctp
+msgid   "Gender"
+msgstr  "लिंग"
+
+
+#: views/users/myprofile.ctp
+msgid   "Marital Status"
+msgstr  "वैवाहिक स्थिति"
+
+#: views/users/myprofile.ctp
+msgid   "Wedding date"
+msgstr  "शादी की तारीख"
+
+#: views/users/myprofile.ctp
+msgid   "Pan no"
+msgstr  "पान कोई"
+
+#: views/users/myprofile.ctp
+msgid   "Gaurdian Name"
+msgstr  "व्यक्तिगत नाम"
+
+#: views/users/myprofile.ctp
+msgid   "Gaurdian relation"
+msgstr  "व्यक्तिगत संबंध"
+
+#: views/users/myprofile.ctp
+msgid   "Blood Type"
+msgstr  "रक्त प्रकार"
+
+#: views/users/myprofile.ctp
+msgid   "Phone no"
+msgstr  "फोन नंबर"
+
+#: views/users/myprofile.ctp
+msgid   "Email"
+msgstr  "ईमेल"
+
+#: views/users/myprofile.ctp
+msgid   "Address"
+msgstr  "पता"
+
+#: views/users/myprofile.ctp
+msgid   "City"
+msgstr  "शहर"
+
+#: views/users/myprofile.ctp
+msgid   "State"
+msgstr  "राज्य"
+
+#: views/users/myprofile.ctp
+msgid   "Country"
+msgstr  "देश"
+
+#: views/users/myprofile.ctp
+msgid   "Pin code"
+msgstr  "पिन कोड"
+
+#: views/users/myprofile.ctp
+msgid   "Permanent Address"
+msgstr  "स्थाई पता"
+
+#: views/users/myprofile.ctp
+msgid   "Current Address"
+msgstr  "वर्तमान पता"
+
+#: views/users/myprofile.ctp
+msgid   "Submit"
+msgstr  "वर्तमान पता"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Quality Assurance"
+msgstr  "गुणवत्ता आश्वासन"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Project Management"
+msgstr  "परियोजना प्रबंधन"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Product Management"
+msgstr  "उत्पाद प्रबंधन"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Marketing"
+msgstr  "मार्केटिंग"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "HRD and Administration"
+msgstr  "मानव संसाधन विकास और प्रशासन"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "General"
+msgstr  "सामान्य"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Finance and Accounts"
+msgstr  "वित्त एवं लेखा"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Important Documents"
+msgstr  "महत्वपूर्ण दस्त्तावेज"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Separation Approvals"
+msgstr  "पृथक्करण स्वीकृति"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Apply for Separation"
+msgstr  "विभाजन के लिए आवेदन करें"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Seperation"
+msgstr  "विभाजन"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Appraisal"
+msgstr  "मूल्यांकन"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Appraiser"
+msgstr  "मूल्यांक"
+
+
+#: views/elements/sidebarnew.ctp
+msgid   "Factors"
+msgstr  "कारक"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Factors By Department"
+msgstr  "विभाग द्वारा कारक"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Appraisal System"
+msgstr  "मूल्यांकन प्रणाली"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Self Services"
+msgstr  "स्व सेवा"
+
+#: views/elements/sidebarnew.ctp
+msgid   "My Profile"
+msgstr  "मेरी प्रोफाइल"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Dashboard"
+msgstr  "डैशबोर्ड"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Home"
+msgstr  "घर"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Change Password"
+msgstr  "पासवर्ड बदलें"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Change Profile"
+msgstr  "प्रोफाइल बदलें"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Organizer"
+msgstr  "संयोजकं"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Settings"
+msgstr  "सेटिंग्स"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Log Out"
+msgstr  "लॉग आउट"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Leave System"
+msgstr  "छुट्टी व्यवस्था"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Apply Leave"
+msgstr  "छुट्टी प्रपत्र"
+
+#: views/elements/sidebarnew.ctp
+msgid   "View Leaves"
+msgstr  "छुट्टी पूर्व"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Separation System"
+msgstr  "जुदाई प्रणाली"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Conveyence System"
+msgstr  "Conveyence प्रणाली"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Apply for separation"
+msgstr  "जुदाई प्रपत्र"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Separation"
+msgstr  "जुदाई"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Conveyence System"
+msgstr  "संप्रेषण प्रणाली"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Travel Expense"
+msgstr  "यात्रा खर्च"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Travel Voucher"
+msgstr  "यात्रा वाउचर"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Travel Voucher View"
+msgstr  "यात्रा वाउचर देख"
+
+#: views/elements/sidebarnew.ctp
+msgid   "Expense Voucher"
+msgstr  "व्यय वाउचर"
+
+#: views/elements/sidebarnew.ctp
+msgid   "View Expense"
+msgstr  "व्यय वाउचर देख"
+
+#: views/elements/innerright.ctp
+msgid   "Employee Search..."
+msgstr  "कर्मचारी खोज"
+
+#: views/elements/header.ctp
+msgid   "Select"
+msgstr  "चयन"
+
+#: views/elements/header.ctp:622
+msgid   "Welcome"
+msgstr  "स्वागत हे"
+
+#: views/users/myprofile.ctp:49
+msgid   "Employee ID"
+msgstr  "कर्मचारी आयडी"
+
+
+#: views/users/myprofile.ctp:52
+msgid   "User Name"
+msgstr  "उपयोगकर्ता नाम"
+
+#: views/users/myprofile.ctp:55
+msgid   "Email ID"
+msgstr  "ईमेल आईडी"
+
+
+#: views/users/myprofile.ctp:55
+msgid   "Email ID"
+msgstr  "ईमेल आईडी"
+
+
+#: views/users/myprofile.ctp:1318
+msgid   "Address"
+msgstr  "पता"
+
+#: views/users/myprofile.ctp:1327
+msgid   "Location"
+msgstr  "स्थाना"
+
+#: views/users/myprofile.ctp:1340
+msgid   "Department"
+msgstr  "विभाग"
+
+#: views/users/myprofile.ctp:1349
+msgid   "Designation"
+msgstr  "पद"
+
+#: views/users/myprofile.ctp:1365
+msgid   "Reporting Manger "
+msgstr  "रिपोर्टिंग प्रबंधक"
+
+#: views/users/myprofile.ctp
+msgid   "Dependent Details"
+msgstr  "आश्रित विवरण"
+
+
+#: views/users/myprofile.ctp
+msgid   "Qualification"
+msgstr  "योग्यता"
+
+#: views/users/myprofile.ctp
+msgid   "Previous Employer"
+msgstr  "पूर्व नियोक्ता"
+
+#: views/users/myprofile.ctp
+msgid   "Bank Account Details"
+msgstr  "बैंक खाता विवरण"
+
+#: views/users/myprofile.ctp
+msgid   "Upload Document"
+msgstr  "दस्तावेज़ अपलोड करें"
+
+#: views/users/myprofile.ctp
+msgid   "Wedding Date"
+msgstr  "शादी की तारीख"
+
+#: views/users/myprofile.ctp
+msgid   "Pan No"
+msgstr  "पैन नंबर"
+
+#: views/users/myprofile.ctp
+msgid   "Member Name"
+msgstr  "सदस्य का नाम"
+
+#: views/users/myprofile.ctp
+msgid   "Occupation"
+msgstr  "व्यवसाय"
+
+#: views/users/myprofile.ctp
+msgid   "DOB"
+msgstr  "जन्म तिथि"
+
+
+#: views/users/myprofile.ctp
+msgid   "Action"
+msgstr  "कार्य"
+
+
+
+#: views/users/myprofile.ctp
+msgid   "Relation"
+msgstr  "रिश्ता"
+
+
+#: views/users/myprofile.ctp
+msgid   "Relation"
+msgstr  "रिश्ता"
+
+
+#: views/users/myprofile.ctp
+msgid   "Relation"
+msgstr  "रिश्ता"
+
+
+#: views/users/myprofile.ctp
+msgid   "Relation"
+msgstr  "रिश्ता"
+
+#: views/users/myprofile.ctp
+msgid   "No Records Found"
+msgstr  "कोई रिकॉर्ड नहीं मिला"
+
+#: views/users/myprofile.ctp
+msgid   "Phone"
+msgstr  "फोन"
+
+#: views/users/myprofile.ctp
+msgid   "Please upload documents having extension"
+msgstr  "कृपया विस्तार वाले दस्तावेज़ अपलोड करें"
+
+#: views/users/myprofile.ctp
+msgid   "Select HR"
+msgstr  "मानव संसाधन चुनें"
+
+#: views/users/myprofile.ctp
+msgid   "Contact Information"
+msgstr  "संपर्क जानकारी"
+
+#: views/users/myprofile.ctp
+msgid   "Official Phone No"
+msgstr  "आधिकारिक फोन नंबर"
+
+
+#: views/users/myprofile.ctp
+msgid   "Personal Phone No"
+msgstr  "व्यक्तिगत फोन नंबर"
+
+#: views/users/myprofile.ctp
+msgid   "Official Email"
+msgstr  "आधिकारिक ईमेल"
+
+#: views/users/myprofile.ctp
+msgid   "Personal Email"
+msgstr  "व्यक्तिगत ईमेल"
+
+#: views/users/myprofile.ctp
+msgid   "Qualification Information"
+msgstr  "योग्यता सूचना"
+
+#: views/users/myprofile.ctp
+msgid   "Course"
+msgstr  "कोर्स"
+
+#: views/users/myprofile.ctp
+msgid   "Course"
+msgstr  "कोर्स"
+
+#: views/users/myprofile.ctp
+msgid   "Type"
+msgstr  "प्रकार"
+
+#: views/users/myprofile.ctp
+msgid   "Mark Obtain"
+msgstr  "मार्क ओब्टेन"
+
+#: views/users/myprofile.ctp
+msgid   "Year of Passing"
+msgstr  "उत्तीर्ण होने का वर्ष"
+
+#: views/users/myprofile.ctp
+msgid   "Organisation"
+msgstr  "संगठन"
+
+#: views/users/myprofile.ctp
+msgid   "Organisation Location"
+msgstr  "संगठन का स्थान"
+
+#: views/users/myprofile.ctp
+msgid   "Previous Designation"
+msgstr  "पिछली उपाधि"
+
+#: views/users/myprofile.ctp
+msgid   "Date of joining"
+msgstr  "शामिल होने की तिथि"
+
+#: views/users/myprofile.ctp
+msgid   "Date of Release"
+msgstr  "निर्मोचन की तिथि"
+
+#: views/users/myprofile.ctp
+msgid   "Date of Release"
+msgstr  "निर्मोचन की तिथि"
+
+#: views/users/myprofile.ctp
+msgid   "Salary"
+msgstr  "वेतन"
+
+
+#: views/users/myprofile.ctp
+msgid   "No previous employer found"
+msgstr  "कोई पिछले नियोक्ता पाया नहीं"
+
+#: views/users/myprofile.ctp
+msgid   "Select Bank Branch"
+msgstr  "बैंक शाखा का चयन करें"
+
+#: views/users/myprofile.ctp
+msgid   "Account Holder Name"
+msgstr  "खाताधारक का नाम"
+
+#: views/users/myprofile.ctp
+msgid   "Account Number"
+msgstr  "खाता संख्या"
+
+#: views/users/myprofile.ctp
+msgid   "IFSC Code"
+msgstr  "आईएफएससी कोड"
+
+#: views/users/myprofile.ctp
+msgid   "Select Bank"
+msgstr  "बैंक का चयन करें"
+
+#: views/users/myprofile.ctp
+msgid   "Select Bank"
+msgstr  "बैंक का चयन करें"
+
+#: views/users/myprofile.ctp
+msgid   "Please fill out the form to change your password"
+msgstr  "कृपया अपना पासवर्ड बदलने के लिए फॉर्म भरें"
+
+
+#: views/users/changepass.ctp
+msgid   "Change Password"
+msgstr  "पासवर्ड बदलें"
+
+#: views/users/changepass.ctp
+msgid   "Current Password"
+msgstr  "वर्तमान पासवर्ड"
+
+#: views/users/changepass.ctp
+msgid   "New Password"
+msgstr  "नया पासवर्ड"
+
+#: views/users/changepass.ctp
+msgid   "Confirm Password"
+msgstr  "पासवर्ड की पुष्टि कीजिये"
+
+#: views/users/add_attendance.ctp
+msgid   "Add Attendance Form"
+msgstr  "उपस्थिति फॉर्म जोड़ें"
+
+#: views/users/add_attendance.ctp
+msgid   "Attendance Date"
+msgstr  "उपस्थिति तिथि"
+
+#: views/users/add_attendance.ctp
+msgid   "In Time"
+msgstr  "प्रवेश काल"
+
+#: views/users/add_attendance.ctp
+msgid   "Out Time"
+msgstr  "बाहर जाने का समय"
+
+#: views/users/add_attendance.ctp
+msgid   "Reason"
+msgstr  "कारण"
+
+#: views/users/add_attendance.ctp
+msgid   "in 24 hrs format"
+msgstr  "24 घंटे प्रारूप में"
+
+#: views/users/add_attendance.ctp
+msgid   "for eg"
+msgstr  "उदाहरण के लिए"
+
+#: views/leaves/add.ctp
+msgid   "Leave application"
+msgstr  "छुट्टी का आवेदन पत्र"
+
+#: views/leaves/add.ctp
+msgid   "Employee Name"
+msgstr  "कर्मचारी का नाम"
+
+#: views/leaves/add.ctp
+msgid   "Employee Department"
+msgstr  "कर्मचारी विभाग"
+
+#: views/leaves/add.ctp
+msgid   "Employee Designation"
+msgstr  "कर्मचारी पदनाम"
+
+#: views/leaves/add.ctp
+msgid   "Leave Type"
+msgstr  "छोड़ प्रकार"
+
+#: views/leaves/add.ctp
+msgid   "Start Date"
+msgstr  "आरंभ करने की तिथि"
+
+#: views/leaves/add.ctp
+msgid   "Start Duration"
+msgstr  "प्रारंभ अवधि"
+
+#: views/leaves/add.ctp
+msgid   "Full Day"
+msgstr  "पूरा दिन"
+
+#: views/leaves/add.ctp
+msgid   "Half Day"
+msgstr  "आधा दिन"
+
+#: views/leaves/add.ctp
+msgid   "End Date"
+msgstr  "अंतिम तिथि"
+
+#: views/leaves/add.ctp
+msgid   "End Duration"
+msgstr  "समाप्ति अवधि"
+
+#: views/leaves/add.ctp
+msgid   "Total Leaves"
+msgstr  "कुल छुट्टियां"
+
+
+#: views/leaves/add.ctp
+msgid   "chars min"
+msgstr  "वर्ण न्यूनतम"
+
+#: views/leaves/add.ctp
+msgid   "max"
+msgstr  "अधिकतम"
+
+#: views/leaves/add.ctp
+msgid   "Balance Leave"
+msgstr  "शेष छुट्टियां"
+
+#: views/leaves/add.ctp
+msgid   "Approved Leaves"
+msgstr  "स्वीकृत छुट्टियां"
+
+#: views/leaves/add.ctp
+msgid   "Applied Leaves"
+msgstr  "लागू छुट्टियां"
+
+#: views/leaves/add.ctp
+msgid   "Applied Leaves"
+msgstr  "लागू छुट्टियां"
+
+#: views/leaves/view.ctp
+msgid   "Sr.No"
+msgstr  "क्रम संख्या"
+
+#: views/leaves/view.ctp
+msgid   "Applied Date"
+msgstr  "आवेदन की तिथि"
+
+#: views/HelpDesks/index.ctp
+msgid   "HELP DESK"
+msgstr  "सहायता केंद्र"
+
+
+
+
+
+
+
+
+
+
+#: views/Temporary Components/add.ctp
+msgid   "Temporary Component Add Form"
+msgstr  "अस्थायी घटक फॉर्म जोड़ें"
+
+
+#: views/Temporary Components/add.ctp
+msgid   "Employee Name"
+msgstr  "कर्मचारी का नाम"
+
+#: views/Temporary Components/add.ctp
+msgid   "Department"
+msgstr  "विभाग"
+
+
+#: views/Temporary Components/add.ctp
+msgid   "Claim Date"
+msgstr  "दावे की तिथि"
+
+#: views/Temporary Components/add.ctp
+msgid   "Salary Type"
+msgstr  "वेतन प्रकार"
+
+#: views/Temporary Components/add.ctp
+msgid   "Temporary Component"
+msgstr  "अस्थायी घटक"
+
+
+#: views/Temporary Components/add.ctp
+msgid   "Temporary Component"
+msgstr  "अस्थायी घटक"
+
+#: views/Temporary Components/add.ctp
+msgid   "Claim-Amount"
+msgstr  "दावा राशि"
+
+#: views/Temporary Components/add.ctp
+msgid   "File"
+msgstr  "फ़ाइल"
+
+#: views/Temporary Components/add.ctp
+msgid   "Click Add Button for Add Temporary Component"
+msgstr  "अस्थायी घटक जोड़ने के लिए बटन जोड़ें पर क्लिक करें"
+
+#: views/Temporary Components/add.ctp
+msgid   "created date"
+msgstr  "रचना तिथि"
+
+#: views/Temporary Components/add.ctp
+msgid   "Task Name"
+msgstr  "कार्य का नाम"
+
+#: views/Temporary Components/add.ctp
+msgid   "Priority"
+msgstr  "प्राथमिकता"
+
+#: views/Temporary Components/add.ctp
+msgid   "Status"
+msgstr  "स्थिति"
+
+#: views/Temporary Components/add.ctp
+msgid   "Complete"
+msgstr  "पूर्ण"
+
+#: views/Temporary Components/add.ctp
+msgid   "Details"
+msgstr  "विवरण"
+
+#: views/Temporary Components/add.ctp
+msgid   "Related Meeting"
+msgstr  "संबंधित बैठक"
+
+#: views/Temporary Components/add.ctp
+msgid   "Task Forward"
+msgstr  "टास्क फ़ॉरवर्ड"
+
+#: views/Temporary Components/add.ctp
+msgid   "Notification"
+msgstr  "अधिसूचना"
+
+#: views/Temporary Components/add.ctp
+msgid   "S.No"
+msgstr  "क्रम संख्या"
+
+#: views/Temporary Components/add.ctp
+msgid   "Previous"
+msgstr  "पिछला"
+
+#: views/Temporary Components/add.ctp
+msgid   "Next"
+msgstr  "अगला"
+
+#: views/MOMS/emp_meeting.ctp
+msgid   "Meeting No"
+msgstr  "मीटिंग नं"
+
+#: views/MOMS/emp_meeting.ctp
+msgid   "Subject"
+msgstr  "विषय"
+
+#: views/MOMS/emp_meeting.ctp
+msgid   "Task"
+msgstr  "कार्य"
+
+#: views/MOMS/emp_meeting.ctp
+msgid   "Meeting Date Time"
+msgstr  "मीटिंग दिनांक"
+
+#: views/MOMS/emp_meeting.ctp
+msgid   "Created By"
+msgstr  "के द्वारा बनाई गई"
+
+#: views/MOMS/emp_meeting.ctp
+msgid   "Attachment"
+msgstr  "आसक्ति" 
+
+#: views/MOMS/emp_meeting.ctp
+msgid   "Response"
+msgstr  "प्रतिक्रिया" 
+
+#: views/Boards/req_meeting.ctp
+msgid   "Meeting Number"
+msgstr  "मीटिंग नं"
+
+#: views/Boards/req_meeting.ctp
+msgid   "Request Reference Number"
+msgstr  "अनुरोध संदर्भ संख्या"
+
+#: views/Boards/req_meeting.ctp
+msgid   "Date of Meeting"
+msgstr  "बैठक की तिथि"
+
+#: views/Boards/req_meeting_save.ctp
+msgid   "Date of Meeting"
+msgstr  "बैठक की तिथि"
+
+#: views/Boards/req_meeting_save.ctp
+msgid   "Date of Request"
+msgstr  "विनती की तारीख"
+
+#: views/Boards/req_meeting_save.ctp
+msgid   "List of Users"
+msgstr  "उपयोगकर्ताओं की सूची"
+
+#: views/Boards/req_meeting_save.ctp
+msgid   "to send meeting mails"
+msgstr  "बैठक मेल भेजने के लिए"
+
+#: views/Boards/req_meeting_save.ctp
+msgid   "Attachement"
+msgstr  "आसक्ति"
+
+#: views/Boards/req_meeting_save.ctp
+msgid   "to be send as attachment in mails"
+msgstr  "मेल में अनुलग्नक के रूप में भेजा जाना"
+
+#: views/Boards/req_meeting_save.ctp
+msgid   "Enter Meeting Request"
+msgstr  "मीटिंग अनुरोध दर्ज करें"
+
+#: views/Boards/req_meeting.ctp
+msgid   "Meeting Request"
+msgstr  "बैठक अनुरोध"
+
+#: views/Boards/req_meeting.ctp
+msgid   "List of Meeting Request"
+msgstr  "मीटिंग अनुरोध की सूची"
+
+#: views/Boards/req_meeting.ctp
+msgid   "Preparing Board Management agenda"
+msgstr  "बोर्ड प्रबंधन एजेंडा तैयार करन"
+
+
+#: views/Boards/meeting_decision.ctp
+msgid   "Enter Meeting Decision"
+msgstr  "बैठक का निर्णय दर्ज करें"
+
+#: views/Boards/meeting_decision.ctp
+msgid   "Finalized List of Meeting Decision"
+msgstr  "मीटिंग निर्णय की अंतिम सूची"
+
+
+#: views/Boards/meeting_decision.ctp
+msgid   "Meeting Decision"
+msgstr  "बैठक का निर्णय"
+
+#: views/HelpDesks/index.ctp
+msgid   "TICKET RAISE FORM"
+msgstr  "टिकट फार्म उत्पन्न"
+
+#: views/HelpDesks/index.ctp
+msgid   "Please fill to Raise Tickets"
+msgstr  "कृपया टिकट उत्पन्न करने के लिए भरें"
+
+#: views/HelpDesks/index.ctp
+msgid   "Ticket No/ID"
+msgstr  "टिकट नंबर / आईडी"
+
+#: views/HelpDesks/index.ctp
+msgid   "Ticket Type"
+msgstr  "टिकिट का प्रकार"
+
+#: views/HelpDesks/index.ctp
+msgid   "Complainer"
+msgstr  "शिकायत कर्ता"
+
+#: views/HelpDesks/index.ctp
+msgid   "Complainer Email"
+msgstr  "शिकायतकर्ता ईमेल"
+
+#: views/HelpDesks/index.ctp
+msgid   "Complaint Status"
+msgstr  "शिकायत स्थिति"
+
+#: views/HelpDesks/index.ctp
+msgid   "Complaint Description"
+msgstr  "शिकायत विवरण"O
+
+#: views/HelpDesks/emp_complaints
+msgid   "Ticket List"
+msgstr  "टिकट सूची"
+
+#: views/HelpDesks/emp_complaints
+msgid   "Complaint Type"
+msgstr  "शिकायत प्रकारी"
+
+#: views/HelpDesks/emp_complaints
+msgid   "Complaint Date"
+msgstr  "शिकायत तिथि"
+
+#: views/HelpDesks/emp_complaints
+msgid   "Remarks"
+msgstr  "टिप्पणियाँ"
+
+#: views/HelpDesks/emp_complaints
+msgid   "Attached Document"
+msgstr  "अनुरक्त दस्तावेज़"
+
+#: views/HelpDesks/emp_complaints
+msgid   "Ticket Status"
+msgstr  "टिकट स्थिति"
+
+
+#: views/HelpDesks/emp_complaints
+msgid   "Ticket No"
+msgstr  "टिकट नंबर"
+
+#: views/HelpDesks/index.ctp
+msgid   "Attach File"
+msgstr  "दस्तावेज अपलोड करें"
+
+#: views/HelpDesks/index.ctp
+msgid   "Complaint Description"
+msgstr  "शिकायत विवरण"
+
+#: views/HelpDesks/index.ctp
+msgid   "Ticket Raise Form"
+msgstr  "टिकट फार्म उत्पन्न"
+
+#: views/IncomeTax/incometax_declaration.ctp
+msgid   "Income Tax Declaration Form"
+msgstr  "आयकर घोषणा प्रपत्र"
+
+#: views/IncomeTax/incometax_declaration.ctp
+msgid   "Particulars"
+msgstr  "विवरण"
+
+#: views/IncomeTax/incometax_declaration.ctp
+msgid   "Limit"
+msgstr  "सीमा"
+
+#: views/IncomeTax/incometax_declaration.ctp
+msgid   "Planned Amount"
+msgstr  "नियोजित राशि"
+
+#: views/IncomeTax/view.ctp
+msgid   "Income Tax Declaration Details"
+msgstr  "आयकर घोषणा विवरण"
+
+#: views/IncomeTax/view.ctp
+msgid   "Financial Year"
+msgstr  "वित्तीय वर्ष"
+
+#: views/Seperation/add.ctp
+msgid   "Resignation Date"
+msgstr  "इस्तीफा दिनांक"
+
+#: views/Seperation/add.ctp
+msgid   "Notice Period Needed to be Served"
+msgstr  "नोटिस अवधि के लिए सेवा की आवश्यकता है"
+
+#: views/Seperation/add.ctp
+msgid   "Reason Of Resignation"
+msgstr  "इस्तीफे का कारण"
+
+#: views/Seperation/add.ctp
+msgid   "Separation Form"
+msgstr  "पृथक्करण फॉर्म"
+
+#: views/Seperation/add.ctp
+msgid   "Separation List"
+msgstr  "पृथक्करण सूची"
+
+#: views/Seperation/add.ctp
+msgid   "Resign Date"
+msgstr  "इस्तीफा तारीख"
+
+#: views/Seperation/add.ctp
+msgid   "Separation Status"
+msgstr  "पृथक्करण स्थिति"
+
+#: views/Seperation/add.ctp
+msgid   "Resignation Reason"
+msgstr  "इस्तीफा कारण"
+
+#: views/Seperation/add.ctp
+msgid   "Remark"
+msgstr  "टिप्पणी"
+
+#: views/Seperation/add.ctp
+msgid   "Conveyance expense claim form"
+msgstr  "वाहक व्यय दावा फ़ॉर्म"
+
+
+#: views/Seperation/add.ctp
+msgid   "Voucher Date"
+msgstr  "वाउचर तिथि"
+
+#: views/Seperation/add.ctp
+msgid   "Travel Mode"
+msgstr  "यात्रा मोड"
+
+
+#: views/Seperation/add.ctp
+msgid   "Wheeler Type"
+msgstr  "व्हीलर टाइप"
+
+#: views/Seperation/add.ctp
+msgid   "Wheeler Type"
+msgstr  "व्हीलर टाइप"
+
+#: views/Seperation/add.ctp
+msgid   "From (Place)"
+msgstr  "(जगह) से"
+
+#: views/Seperation/add.ctp
+msgid   "To (Place)"
+msgstr  "(जगह) तक"
+
+#: views/Seperation/add.ctp
+msgid   "Miscellaneous Expenses"
+msgstr  "विविध व्यय"
+
+#: views/Seperation/add.ctp
+msgid   "Misce. Exp. Description"
+msgstr  "विविध व्यय विवरण"
+
+#: views/Seperation/add.ctp
+msgid   "Distance (in Kms.)"
+msgstr  "दूरी (किलोमीटर में)"
+
+#: views/Seperation/add.ctp
+msgid   "Travel Expenses"
+msgstr  "यात्रा व्यय"
+
+#: views/Seperation/add.ctp
+msgid   "Total Expense (in Rs.)"
+msgstr  "कुल खर्च (रुपया में)"
+
+#: views/Seperation/add.ctp
+msgid   "Click here to view rates"
+msgstr  "दर देखने के लिए यहां क्लिक करें"
+
+#: views/hrportal/conveyence_expenses/view.ctp
+msgid   "Voucher Id"
+msgstr  "वाउचर आईडी"
+
+#: views/hrportal/conveyence_expenses/view.ctp
+msgid   "Distance"
+msgstr  "दूरी"
+
+#: views/conveyence_expenses/view.ctp
+msgid   "Total Expense"
+msgstr  "कुल खर्च"
+
+#: views/conveyence_expenses/approval
+msgid   "Voucher ID"
+msgstr  "वाउचर आईडी"
+
+#: views/conveyence_expenses/approval
+msgid   "Name"
+msgstr  "नाम"
+
+#: views/conveyence_expenses/approval
+msgid   "Update Status"
+msgstr  "नवीनतम स्थिति"
+
+#: views/conveyence_expenses/approval
+msgid   "Approval"
+msgstr  "अनुमोदन"
+
+#: views/conveyence_expenses/employee_expense_report
+msgid   "Employee Expense Report"
+msgstr  "कर्मचारी व्यय रिपोर्ट"
+
+#: views/conveyence_expenses/employee_expense_report
+msgid   "Expense Report"
+msgstr  "व्यय आख्या"
+
+#: views/conveyence_expenses/employee_expense_report
+msgid   "From Date"
+msgstr  "तारीख से"
+
+#: views/conveyence_expenses/employee_expense_report
+msgid   "Voucher Status"
+msgstr  "वाउचर स्थिति"
+
+#: views/conveyence_expenses/employee_expense_report
+msgid   "Claim date wise reports"
+msgstr  "दावा की तारीख के अनुसार रिपोर्टें"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Visited City"
+msgstr  "शहर का दौरा किया"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Travel Expense Report Statement"
+msgstr  "यात्रा व्यय रिपोर्ट विवरण"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Visited City"
+msgstr  "शहर का दौरा किया"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Tour Start Date"
+msgstr  "यात्रा आरंभ दिनांक"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "By"
+msgstr  "द्वारा"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Tour End Date"
+msgstr  "यात्रा समाप्ति तिथि"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Ticket Booked By self"
+msgstr  "टिकट स्वयं द्वारा बुक किया गया"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Local Conveyance During Travel Period"
+msgstr  "यात्रा अवधि के दौरान स्थानीय वाहन"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Detail of Local Conveyance"
+msgstr  "स्थानीय वाहन का विस्तार"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Daily Allowance"
+msgstr  "दैनिक भत्ता"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Days"
+msgstr  "दिन"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "per Day"
+msgstr  "प्रतिदिन"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Telephone Expense"
+msgstr  "टेलीफोन व्यय"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Miscellaneous Expense"
+msgstr  "विविध खर्च"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Detail of Miscellaneous Expense"
+msgstr  "विविध व्यय का विवरण"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Expense Incurred For Client/B.P"
+msgstr  "ग्राहक / बीपी के लिए खर्च व्यय"   
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Any Other Expense"
+msgstr  "कोई अन्य व्यय"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Total Travel Expense Incurred"
+msgstr  "कुल यात्रा खर्च व्यय"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Advance Taken From Another Employee"
+msgstr  "अग्रिम एक कर्मचारी से लिया गया"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Name of the Employee"
+msgstr  "कर्मचारी का नाम"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Balance Amount to be Paid to Employee"
+msgstr  "कर्मचारी को भुगतान की शेष राशि"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Amount To Be Returned To Head Office"
+msgstr  "प्रधान कार्यालय को वापस आने की राशि"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Daily Allowance For"
+msgstr  "दैनिक भत्ता के लिए"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Daily Hotel Expense for"
+msgstr  "दैनिक होटल व्यय के लिए"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Upload Document"
+msgstr  "दस्तावेज़ अपलोड करें"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Mode"
+msgstr  "साधन"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Amount"
+msgstr  "रकम"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Add More"
+msgstr  "अधिक जोड़ें"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Remove"
+msgstr  "मिटा दे"
+
+#: views/conveyence_expenses/trvoucher
+msgid   "Copy previously applied travel voucher"
+msgstr  "पहले लागू यात्रा वाउचर कॉपी करें"
+
+#: views/hrportal/travels/view.ctp
+msgid   "Document"
+msgstr  "दस्तावेज़"
+
+#: views/hrportal/travels/view.ctp
+msgid   "Voucher No"
+msgstr  "वाउचर संख्या"
+
+#: views/hrportal/travels/view.ctp
+msgid   "in Rs."
+msgstr  "रुपया में"
+
+#: views/hrportal/travels/view.ctp
+msgid   "Balance Amount"
+msgstr  "शेष राशि"
+
+#: views/hrportal/travels/view.ctp
+msgid   "Amount To Be Returned"
+msgstr  "वापसी की राशि"
+
+
+
+#: views/hrportal/TravelMasters/add.ctp
+msgid   "Add Travel-Master"
+msgstr  "यात्रा-मास्टर जोड़ें"
+
+#: views/hrportal/TravelMasters/add.ctp
+msgid   "Enter Travel-Master"
+msgstr  "यात्रा-मास्टर दर्ज करें"
+
+#: views/hrportal/TravelMasters/add.ctp
+msgid   "Department Id"
+msgstr  "विभाग आईडी"
+
+#: views/hrportal/TravelMasters/add.ctp
+msgid   "Designation Id"
+msgstr  "पदनाम आईडी"
+
+#: views/hrportal/TravelMasters/add.ctp
+msgid   "City Group"
+msgstr  "पदनाम आईडी"
+
+#: views/hrportal/TravelMasters/add.ctp
+msgid   "Cash Allowance Daily"
+msgstr  "पदनाम आईडी"
+
+#: views/hrportal/TravelMasters/add.ctp
+msgid   "Hotel Entitlement"
+msgstr  "होटल के हकदार"
+
+#: views/hrportal/TravelMasters/add.ctp
+msgid   "Travel-Master"
+msgstr  "यात्रा-मास्टर"
+
+#: views/hrportal/TravelMasters/add.ctp
+msgid   "List of Travel-Master"
+msgstr  "यात्रा-मास्टर की सूची"
+
+#: views/hrportal/Travels/employee_travel_report.ctp
+msgid   "Employee Travels Report"
+msgstr  "कर्मचारी यात्रा रिपोर्ट"
+
+#: views/hrportal/Travels/employee_travel_report.ctp
+msgid   "Travel Report"
+msgstr  "यात्रा रिपोर्ट"
+
+#: views/hrportal/Travels/employee_travel_report.ctp
+msgid   "Paid"
+msgstr  "भुगतान किया है"
+
+#: views/hrportal/Travels/employee_travel_report.ctp
+msgid   "Due"
+msgstr  "दावा"
+
+#: views/hrportal/Travels/employee_travel_report.ctp
+msgid   "Reimbursement"
+msgstr  "भरपाई"
+
+#: views/hrportal/Travels/employee_travel_report.ctp
+msgid   "Report"
+msgstr  "विवरण"
+
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Good Night"
+msgstr  "शुभ रात्रि"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Good Evening"
+msgstr  "शुभ संध्या"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Good Afternoon"
+msgstr  "शुभ मध्यान्ह"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Good Morning"
+msgstr  "शुभ प्रभात"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Have a Great Day"
+msgstr  "आपका दिन शुभ हो"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Leaves Taken This Month"
+msgstr  "छुट्टियां इस महीने ले लिया"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Conveyance"
+msgstr  "वाहन"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Pending Tasks"
+msgstr  "लंबित कार्य"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Travels"
+msgstr  "ट्रेवल्स"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Today's Birthday"
+msgstr  "आज का जन्मदिन"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Upcoming Birthdays"
+msgstr  "आगामी जनमदिन"
+
+#: views/hrportal/users/dashboard.ctp
+msgid   "Pending MOM's"
+msgstr  "लंबित एमओएम"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Dashboard"
+msgstr  "डैशबोर्ड"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "My Profile"
+msgstr  "मेरी प्रोफाइल"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "View Profile"
+msgstr  "प्रोफाइल देखिये"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Change Password"
+msgstr  "पासवर्ड बदलें"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Attendance"
+msgstr  "उपस्थिति"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Apply Attendance"
+msgstr  "उपस्थिति लागू करें"
+
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Add Temporary Component"
+msgstr  "अस्थायी घटक जोड़ें"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "View"
+msgstr  "दर्शन"
+
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Leave System"
+msgstr  "छुट्टी प्रणाली"
+
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Task Management"
+msgstr  "कार्य प्रबंधन"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "View Tasks"
+msgstr  "कार्य देखें"
+
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "MOM Management"
+msgstr  "एमओएम प्रबंधन"
+
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "View Emp Meeting"
+msgstr  "कर्मचारी बैठक देखें"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Meeting Request of Board Management"
+msgstr  "बोर्ड प्रबंधन का मीटिंग अनुरोध"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Separation System"
+msgstr  "पृथक्करण प्रणाली"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "View Separation"
+msgstr  "विच्छेद देखें"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Conveyance System"
+msgstr  "वाहक प्रणाली"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Expense Approval"
+msgstr  "व्यय स्वीकृति"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Travel Expense"
+msgstr  "यात्रा व्यय"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Travel Voucher Approval"
+msgstr  "यात्रा वाउचर अनुमोदन"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Travel Master Daily Allowance View"
+msgstr  "यात्रा मास्टर दैनिक भत्ता देखें"
+
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Meeting Decision of Board Management"
+msgstr  "बोर्ड मैनेजमेंट की बैठक का निर्णय"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Help Desk"
+msgstr  "सहायता केंद्र"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Add Help Ticket"
+msgstr  "सहायता टिकट जोड़ें"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "View Your Tickets"
+msgstr  "अपने टिकट देखें"
+
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "View Assigned Tickets"
+msgstr  "असाइन किए गए टिकट देखें"
+
+#: views/hrportal/users/elements/left_menu.ctp
+msgid   "Income Tax Declaration"
+msgstr  "आयकर घोषणा"
+
+
+#: views/hrportal/users/temporary_components/View.ctp
+msgid   "Temporary Amount Claim Details"
+msgstr  "अस्थायी राशि दावा विवरण"
+
+
+#: views/hrportal/leaves/add.ctp
+msgid   "Leave Form"
+msgstr  "अवकाश प्रपत्र"
+
+
+#: views/hrportal/leaves/add.ctp
+msgid   "Leave Form"
+msgstr  "अवकाश प्रपत्र"
+
+#: views/hrportal/HelpDesks/index.ctp
+msgid   "Ticket Priority"
+msgstr  "टिकट प्राथमिकता"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

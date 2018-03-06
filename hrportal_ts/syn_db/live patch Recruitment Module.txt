@@ -1,0 +1,262 @@
+INSERT INTO `admin_options` (`id`, `name`, `value`, `description`, `sloc_id`, `cloud_id`, `ho_id`, `ho_org_id`) 
+VALUES (NULL, 'Recruitment_Module', '1', 'Recruitment Module', NULL, NULL, NULL, NULL);
+DROP TABLE 'requirement_workflow'
+CREATE TABLE IF NOT EXISTS `requirement_workflow` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `req_id` varchar(50) NOT NULL,
+  `emp_code` varchar(50) NOT NULL,
+  `fw_date` date NOT NULL,
+  `remark` varchar(255) NOT NULL,
+  `status` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+'CREATE TABLE IF NOT EXISTS `req_master_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `req_id` varchar(10) NOT NULL,
+  `dept_code` varchar(50) NOT NULL,
+  `desg_code` varchar(50) NOT NULL,
+  `resource_req` varchar(50) NOT NULL,
+  `user_raised` varchar(50) NOT NULL,
+  `hiring_type` int(12) NOT NULL,
+  `position_type` varchar(11) NOT NULL,
+  `position_name` varchar(50) NOT NULL,
+  `replace_emp_name` varchar(25) NOT NULL,
+  `emp_group` varchar(255) NOT NULL,
+  `max_join_date` date NOT NULL,
+  `details` text NOT NULL,
+  `location_name` varchar(230) NOT NULL,
+  `required_exp` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `manager_code` varchar(11) NOT NULL,
+  `hr_code` varchar(29) NOT NULL,
+  `approver_id` varchar(23) NOT NULL,
+  `hr_approval_status` varchar(17) NOT NULL,
+  `jd_doc` varchar(244) NOT NULL,
+  `created_date` date NOT NULL,
+  `modified_date` date NOT NULL,
+  `modified_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+CREATE TABLE IF NOT EXISTS `req_skills_master` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `req_id` varchar(20) NOT NULL,
+  `desg_code` varchar(22) NOT NULL,
+  `skills` text NOT NULL,
+  `skills_code` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+
+
+CREATE TABLE IF NOT EXISTS `hr_master` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `application_id` int(11) NOT NULL,
+  `hr_code` varchar(22) NOT NULL,
+  `created_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+CREATE TABLE IF NOT EXISTS `md_master` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `application_id` int(11) NOT NULL,
+  `comp_code` varchar(11) NOT NULL,
+  `md_code` varchar(230) NOT NULL,
+  `created_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+CREATE TABLE IF NOT EXISTS `hcm$cndt$skill` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cld_id` varchar(4) DEFAULT NULL,
+  `sloc_id` int(2) DEFAULT NULL,
+  `ho_org_id` varchar(2) DEFAULT NULL,
+  `org_id` varchar(4) DEFAULT NULL,
+  `doc_id` varchar(40) DEFAULT NULL,
+  `cndt_code` varchar(20) DEFAULT NULL,
+  `skil_id` varchar(20) DEFAULT NULL,
+  `skil_desc` varchar(250) DEFAULT NULL,
+  `skil_apli_dt` date DEFAULT NULL,
+  `usr_id_create` int(10) DEFAULT NULL,
+  `usr_id_create_dt` date DEFAULT NULL,
+  `usr_id_mod` int(10) DEFAULT NULL,
+  `usr_id_mod_dt` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+
+
+CREATE TABLE IF NOT EXISTS `candidate_document_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `candidate_id` varchar(25) NOT NULL,
+  `document_name` varchar(255) NOT NULL,
+  `document_path` varchar(255) NOT NULL,
+  `status` varchar(12) NOT NULL,
+  `created_by` varchar(25) NOT NULL,
+  `created_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+CREATE TABLE IF NOT EXISTS `candidate_shortlist_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `candidate_id` varchar(255) NOT NULL,
+  `emp_code` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+
+CREATE TABLE IF NOT EXISTS `sch_interview_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `candidate_id` int(40) NOT NULL,
+  `candidate_no` int(50) NOT NULL,
+  `req_int_date` date NOT NULL,
+  `avl_int_date` date NOT NULL,
+  `created_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+ALTER TABLE `labels` CHANGE `name` `name` VARCHAR(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+
+ALTER TABLE `labels` CHANGE `css_name` `css_name` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+INSERT INTO `label_page` ( `name`, `applications_id`, `heading`, `page_status`, `solc_id`, `cld_id`, `ho_org_id`, `org_id`, `emp_doc_id`, `doc_id`) VALUES ( 'ScheduleInterviewDetails', 10, 'Candidates Interview Schedule Form', 1, NULL, NULL, NULL, NULL, NULL, NULL), 
+( 'INTERVIEW ASSESSMENT SHEET', 10, 'INTERVIEW ASSESSMENT SHEET', 1, NULL, NULL, NULL, NULL, NULL, NULL), ( ' Competencies', 10, 'PART II ', 1, NULL, NULL, NULL, NULL, NULL, NULL), ( 'Recruitment Report', 10, 'Recruitment Details', 1, NULL, NULL, NULL, NULL, NULL, NULL);
+
+INSERT INTO `label_block` ( `name`, `label_page_id`, `block_status`, `block_heading`, `block_priority`, `solc_id`, `cld_id`, `ho_org_id`, `org_id`, `emp_doc_id`, `doc_id`) VALUES 
+( 'ScheduleInterviewDetails', 2, 1, 'ScheduleInterviewDetails', 10, NULL, NULL, NULL, NULL, NULL, NULL), ( 'Interview Rating Panel', 3, 1, 'Form for Junior Management ', 1, NULL, NULL, NULL, NULL, NULL, NULL), 
+( 'Competencies', 3, 1, 'Form for Junior Management', 2, NULL, NULL, NULL, NULL, NULL, NULL), 
+( 'Recruitment Report', 5, 1, 'Recruitment Report', 1, NULL, NULL, NULL, NULL, NULL, NULL);
+
+
+INSERT INTO `labels` (`id`, `label_block_id`, `name`, `label_status`, `type`, `priority`, `options_id`, `css_name`, `solc_id`, `cld_id`, `ho_org_id`, `org_id`, `emp_doc_id`, `doc_id`) VALUES
+
+(14, 11, 'Candidate No', 1, 'text', 1, NULL, 'candidate_no', NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 11, 'Candidate Name', 1, 'text', 2, NULL, 'candidate_name', NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 11, 'Requested Interview Date', 1, 'text', 3, NULL, 'req_interview_date', NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 11, 'Available Date Range', 1, 'text', 4, NULL, 'avl_interview_date', NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 11, 'Interview Type', 1, 'Select', 5, NULL, 'Interview_type', NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 11, 'Interview Date', 1, 'text', 6, NULL, 'Interview_Date', NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 11, 'Interview Time', 1, 'text', 6, NULL, 'Interview_time', NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 11, 'Interviewer', 1, 'select', 6, NULL, 'Interviewer', NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 12, 'Name of the Candidate', 1, 'text', 1, NULL, 'Name of the Candidate', NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 12, 'Position Applied for', 1, 'text', 2, NULL, 'Position Applied for', NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 12, 'Date of Interview (dd-mm-yyyy)', 1, 'text', 3, NULL, 'Date of Interview (dd-mm-yyyy)', NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 12, 'Total Experience', 1, 'select', 4, NULL, 'Total Experience', NULL, NULL, NULL, NULL, NULL, NULL),
+(26, 12, 'Name of Interviewer (s)', 1, 'text', 5, NULL, 'Name of Interviewer (s)', NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 12, 'Source of CV', 1, 'text', 6, NULL, 'Source of CV', NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 12, 'form page heading2', 1, 'text', 7, NULL, 'Please evaluate the candidate against position requirements and provide rating as per scale below', NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 12, '1 = Excellent', 1, 'heading', 8, NULL, 'Is overqualified and candidature far exceeds position expectations', NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 12, '2 = Very Good', 1, 'heading', 9, NULL, 'Is well qualified for the position and candidature exceeds position expectations', NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 12, '3 = Good ', 1, 'heading', 10, NULL, 'Is adequately qualified and experienced and candidature meets all position expectations', NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 12, '4 = Below Average', 1, 'text', 11, NULL, ' Below Average\nDoes not qualify for all position requirements and candidature falls short of expectations', NULL, NULL, NULL, NULL, NULL, NULL),
+(33, 12, '5 = Poor', 1, 'text', 12, NULL, 'Candidature does not meet position requirements', NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 12, 'INTERVIEW OBSERVATIONS', 1, 'heading block', 13, NULL, 'PART I : Qualification, Experience and Job related technical Skills ', NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 12, 'Parameter', 1, 'heading block', 14, NULL, 'Parameter', NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 12, 'Rating', 1, 'heading block', 15, NULL, 'Rating\r\n', NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 12, 'Observations', 1, 'heading block', 16, NULL, 'Observations\r\n', NULL, NULL, NULL, NULL, NULL, NULL),
+(38, 12, 'Qualification / Academic requirements and Trainings', 1, 'heading block', 17, NULL, 'Relevance of the qualification /trainings / certifications for the post applied\n', NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 12, 'Relevant Experience-', 1, 'heading block', 18, NULL, 'Relevance of the past experience for the post applied', NULL, NULL, NULL, NULL, NULL, NULL),
+(40, 12, 'Technical Skills/Domain Knowledge  -', 1, 'heading block', 19, NULL, 'Displayed Technical Skills/Knowledge required for the position applied for', NULL, NULL, NULL, NULL, NULL, NULL),
+(41, 12, 'General Observations', 1, 'heading block', 21, NULL, 'General Observations', NULL, NULL, NULL, NULL, NULL, NULL),
+(42, 12, 'Communication Skills', 1, '1', 22, NULL, 'Communication Skills', NULL, NULL, NULL, NULL, NULL, NULL),
+(43, 12, 'Strengths ', 1, '1', 23, NULL, 'Strengths', NULL, NULL, NULL, NULL, NULL, NULL),
+(44, 12, 'Areas for  Improvement', 1, 'heading block', 24, NULL, 'Areas for  Improvement', NULL, NULL, NULL, NULL, NULL, NULL),
+(45, 12, 'Recommendation (Please Tick)', 1, 'heading block', 25, NULL, 'Recommendation (Please Tick)\r\n', NULL, NULL, NULL, NULL, NULL, NULL),
+(46, 12, 'Selected', 1, 'heading block', 26, NULL, 'Selected\r\n', NULL, NULL, NULL, NULL, NULL, NULL),
+(47, 12, 'Rejected', 1, 'heading block', 27, NULL, 'Rejected', NULL, NULL, NULL, NULL, NULL, NULL),
+(48, 12, 'On Hold', 1, 'heading block', 28, NULL, 'On Hold', NULL, NULL, NULL, NULL, NULL, NULL),
+(49, 12, 'Reason(s) for recommendation :', 1, 'heading block', 29, NULL, 'Reason(s) for recommendation :', NULL, NULL, NULL, NULL, NULL, NULL),
+(50, 12, 'Signature of the Interviewer(s)', 1, 'heading block', 30, NULL, 'Signature of the Interviewer(s)', NULL, NULL, NULL, NULL, NULL, NULL),
+(51, 12, 'To be filled in by HR', 1, 'heading block', 31, NULL, 'To be filled in by HR', NULL, NULL, NULL, NULL, NULL, NULL),
+(52, 12, 'Current CTC (per annum)	', 1, 'heading block', 32, NULL, 'Current CTC (per annum)	', NULL, NULL, NULL, NULL, NULL, NULL),
+(53, 12, 'CTC Offered  (per annum)	', 1, 'heading block', 33, NULL, 'CTC Offered  (per annum)	', NULL, NULL, NULL, NULL, NULL, NULL),
+(54, 12, 'Expected Date of Joining', 1, 'heading block', 34, NULL, 'Expected Date of Joining', NULL, NULL, NULL, NULL, NULL, NULL),
+(55, 12, 'Remarks (if any)', 1, 'heading block', 35, NULL, 'Remarks (if any)', NULL, NULL, NULL, NULL, NULL, NULL),
+(56, 12, 'Competency\r\n', 1, 'heading block', 36, NULL, 'PART II:', NULL, NULL, NULL, NULL, NULL, NULL),
+(57, 12, 'Rating\r\n\r\n', 1, 'heading block', 37, NULL, 'Rating\r\n\r\n', NULL, NULL, NULL, NULL, NULL, NULL),
+(58, 12, 'Observations', 1, 'heading block', 38, NULL, 'Observations', NULL, NULL, NULL, NULL, NULL, NULL),
+(59, 14, 'Requisition No.', 1, 'heading', 1, NULL, 'Requisition No.', NULL, NULL, NULL, NULL, NULL, NULL),
+(60, 14, 'Location.', 1, 'heading', 2, NULL, 'Location.', NULL, NULL, NULL, NULL, NULL, NULL),
+(61, 14, 'Designation.', 1, 'heading', 3, NULL, 'Designation.', NULL, NULL, NULL, NULL, NULL, NULL),
+(62, 14, 'Department.', 1, 'heading', 4, NULL, 'Department.', NULL, NULL, NULL, NULL, NULL, NULL),
+(63, 14, 'EC of Requisitor.', 1, 'heading', 5, NULL, 'EC of Requisitor.', NULL, NULL, NULL, NULL, NULL, NULL),
+(64, 14, 'Name of Requisitor.', 1, 'heading', 6, NULL, 'Name of Requisitor.', NULL, NULL, NULL, NULL, NULL, NULL),
+(65, 14, 'Position \r\n( New/ Replacement)', 1, 'heading', 7, NULL, 'Position \r\n( New/ Replacement)', NULL, NULL, NULL, NULL, NULL, NULL),
+(66, 14, 'EC of Leaving Employee', 1, 'heading', 8, NULL, 'EC of Leaving Employee', NULL, NULL, NULL, NULL, NULL, NULL),
+(67, 14, 'Name of Leaving Employee', 1, 'heading', 9, NULL, 'Name of Leaving Employee', NULL, NULL, NULL, NULL, NULL, NULL),
+(68, 14, 'Date Of Opening of Position', 1, 'heading', 10, NULL, 'Date Of Opening of Position', NULL, NULL, NULL, NULL, NULL, NULL),
+(69, 14, 'Offered On', 1, 'heading', 11, NULL, 'Offered On', NULL, NULL, NULL, NULL, NULL, NULL),
+(70, 14, 'Status', 1, 'heading', 12, NULL, 'Status.', NULL, NULL, NULL, NULL, NULL, NULL),
+(71, 14, 'Remarks, If any', 1, 'heading', 13, NULL, 'Remarks, If any', NULL, NULL, NULL, NULL, NULL, NULL);
+
+ CREATE TABLE IF NOT EXISTS `interviewer_details` ( `id` int(11) NOT NULL AUTO_INCREMENT, `emp_code` varchar(25) NOT NULL, 
+`candidate_id` varchar(20) NOT NULL, `interviewer_code` varchar(60) NOT NULL, `int_type` varchar(12) 
+NOT NULL, `int_date` date NOT NULL, `int_time` time NOT NULL, `status` int(11) NOT NULL, 
+`interviewer_level` int(40) NOT NULL, `Interviewer_panel_staus` int(11) NOT NULL, `created_date` date NOT NULL, PRIMARY KEY (`id`) ) 
+ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+CREATE TABLE IF NOT EXISTS `interviewer_rating_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `candidate_id` int(18) NOT NULL,
+  `position_applied` varchar(113) NOT NULL,
+  `cndt_total_exp` varchar(130) NOT NULL,
+  `interviewer_code` varchar(140) NOT NULL,
+  `source_of_cv` varchar(11) NOT NULL,
+  `qualification_rating` varchar(11) NOT NULL,
+  `relevent_exp_rating` varchar(11) NOT NULL,
+  `tech_skill_rating` varchar(11) NOT NULL,
+  `qualification_observation` varchar(255) NOT NULL,
+  `relevent_exp_observation` varchar(255) NOT NULL,
+  `tech_skill_observation` varchar(255) NOT NULL,
+  `cndt_communication_observation` varchar(255) NOT NULL,
+  `cndt_strength` varchar(200) NOT NULL,
+  `Area_of_improvement` varchar(200) NOT NULL,
+  `recommendation_status` varchar(11) NOT NULL,
+  `reason_for_recomend` varchar(200) NOT NULL,
+  `interviewer_sign` int(11) NOT NULL,
+  `current_ctc` varchar(255) DEFAULT NULL,
+  `ctc_offered` varchar(255) NOT NULL,
+  `date_of_interview` date NOT NULL,
+  `expected_date_joining` date DEFAULT NULL,
+  `hr_remarks` varchar(255) NOT NULL,
+  `created_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+CREATE TABLE IF NOT EXISTS `competencies_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mgt_code` varchar(23) NOT NULL,
+  `comepetency_types` varchar(255) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `created_by` varchar(233) NOT NULL,
+  `created_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+CREATE TABLE IF NOT EXISTS `interviewer_competencies_rating` 
+( `id` int(11) NOT NULL AUTO_INCREMENT, `candidate_id` varchar(20) NOT NULL,
+ `interviewer_code` varchar(43) NOT NULL, `mgmt_code` varchar(33) NOT NULL, 
+`competency_type_id` varchar(44) NOT NULL, `competency_rating` varchar(11) NOT NULL,
+ `competency_observation` varchar(255) NOT NULL, `created_date` date NOT NULL, PRIMARY KEY (`id`) ) 
+ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+
+CREATE TABLE IF NOT EXISTS `competency_level` 
+( `id` int(11) NOT NULL AUTO_INCREMENT, `competency_lvl` varchar(39) NOT NULL,
+ `management_code` varchar(20) NOT NULL, `status` enum('0','1') NOT NULL DEFAULT '0',
+ `created_date` date NOT NULL, PRIMARY KEY (`id`) ) 
+ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
+
+
+
+
+ALTER TABLE `req_master_details` CHANGE `hiring_type` `hiring_type` INT(12) NULL;
+ALTER TABLE `req_master_details` CHANGE `manager_code` `manager_code` VARCHAR(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `req_master_details` CHANGE `hr_code` `hr_code` VARCHAR(29) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `req_master_details` CHANGE `hr_approval_status` `hr_approval_status` VARCHAR(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `req_master_details` CHANGE `modified_date` `modified_date` DATE NULL;
+ALTER TABLE `requirement_workflow` CHANGE `remark` `remark` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `requirement_workflow` CHANGE `fw_date` `fw_date` DATE NULL;
+ALTER TABLE `requirement_workflow` CHANGE `status` `status` INT(1) NULL;
+

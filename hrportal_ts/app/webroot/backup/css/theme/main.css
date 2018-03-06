@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+body {
+	float: left;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	margin: 0;
+}
+.header {
+	background: #ffffff;
+	width: 980px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.client-logo {
+	background: url(../../img/client_logo.png) no-repeat 0 0;
+	width: 45%;
+	height: 119px;
+	text-indent: -9999px;
+	display: block;
+	float: left;
+}
+.ebiz-logo {
+	background: url(../../img/ebiz_logo.jpg) no-repeat 0 0;
+	width: 36%;
+	height: 119px;
+	text-indent: -9999px;
+	display: block;
+	float: right;
+}
+.section {
+	background: #000000;
+	width: 100%;
+	float: left;
+}
+#wrapper {
+	background: #000000 url(../../img/login_page_bg.png) center 0 no-repeat;
+	width: 980px;
+	margin: 0 auto;
+	clear: both;
+	min-height: 453px;
+}
+.footer {
+	background: none repeat scroll 0 0 #000000;
+	color: #FFFFFF;
+	float: left;
+	padding: 0 0 10px;
+	text-align: center;
+	width: 100%;
+}
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+.ebiz {
+	background: url(../../img/login_page.png) no-repeat;
+	text-indent: -9999px;
+	float: left;
+	width: 557px;
+	height: 440px;
+}
+.login-form {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #022339;
+	background: transparent;
+	float: right;
+	margin: 20px;
+	padding: 10px 20px;
+	width: 294px;
+}
+.login-form ul {
+	margin: 0;
+	padding: 0;
+}
+.login-form ul li {
+	float: left;
+	list-style: none outside none;
+	padding: 0 0 8px;
+	width: 100%;
+}
+.login-form input, .login-form label {
+	width: 96%;
+	float: left;
+}
+.login-form input {
+	padding: 5px;
+}
+.login-form label, .login-form a {
+	color: #ffffff;
+	padding-bottom: 5px;
+}
+.login-form a{
+color:#ccc;
+text-decoration:none;	
+}
+.float-right {
+	float: right;
+}
+input.button {
+	background: #fd7700;
+	width: auto;
+	padding: 5px 10px;
+	color: #ffffff;
+	float: right;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/
+ */
+
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+.clearfix:before, .clearfix:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+.clearfix:after {
+	clear: both;
+}
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+ *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */

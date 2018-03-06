@@ -1,0 +1,214 @@
+<!-- page content -->
+<div id="page_content" role="main">
+    <div id="page_content_inner">
+        <h3 class="heading_b uk-margin-bottom">Add Attendance Form</h3>
+        <?php echo $flash = $this->Session->flash(); ?>
+        <div id="alerts"></div>
+        <div class="md-card">
+            <div class="md-card-content large-padding">
+                <form id="demo-form4" data-parsley-validate enctype="multipart/form-data" class="form-horizontal form-label-left" method="POST" action="save_attendance" >
+                <div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-medium-1-2">
+                        <div class="parsley-row">
+                    <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Attendance Date<span class="required">*</span></label>
+                    <?php echo $this->form->input('atten_dt', array('label'=>false,'class'=>"md-input",'type' => 'text', 'id' => 'atten_dt','readonly'=>true)); ?>
+                  </div>
+                </div>
+               <div class="uk-width-medium-1-2">
+                        <div class="parsley-row">
+                   <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">In Time<span class="required">*</span><br/><small>(in 24 hrs format. for eg 15:32)</small></label>
+                   <?php echo $this->form->input('in_time', array('label'=>false,'class'=>"md-input",'type' => 'text', 'id' => 'in_time')); ?>
+                  </div>
+                </div>
+                <div class="uk-width-medium-1-2">
+                        <div class="parsley-row">
+                  <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Out Time<span class="required">*</span><br/><small>(in 24 hrs format. for eg 15:32)</small></label>
+                   <?php echo $this->form->input('out_time', array('label'=>false,'class'=>"md-input",'type' => 'text', 'id' => 'out_time')); ?>
+                  </div>
+                </div>  
+                <div class="uk-width-medium-1-2">
+                    <div class="parsley-row">
+                        <label for="first-name">Description</label>
+                     <?php echo $this->form->input('description', array('label'=>false,'class'=>"md-input",'type' => 'textarea','maxlength'=>'100')); ?>
+                    </div>
+                </div> 
+                <div class="uk-width-1-3 uk-margin-top">
+                    <div class="parsley-row">
+                        <button type="submit" onclick="return checkSubmit();" class="md-btn md-btn-primary">Submit</button>
+                        <a class="md-btn md-btn-danger" href="<?php echo $this->webroot;?>users/dashboard/" title="Click to Cancel.">Cancel</a>
+                    </div>
+                </div>
+                </div>
+            </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  <script type="text/javascript">
+jQuery(document).ready(function() {
+        jQuery("#atten_dt").datepicker({
+                startDate: '-30d',
+                maxDate: '0',
+                changeMonth: true,
+                autoclose:true,
+                //changeYear: true,
+                todayHighlight: true,
+                endDate:'today',
+                format: 'dd-mm-yyyy',
+                onSelect: function(selected) {
+                    jQuery("#enddate").datepicker("option","minDate", selected);
+                     var diff = dateDiff(jQuery('#startdate').datepicker("getDate"));
+                     jQuery('#enddate').datepicker("getDate");
+                     if(jQuery('#enddate').val() != ""){
+                                var diff = dateDiff(jQuery('#startdate').datepicker("getDate"),
+                                jQuery('#enddate').datepicker("getDate"));
+                        }
+                }
+        });
+        
+      });
+ function checktime(same)
+{
+   
+  var val=same;
+  ///trim white spaces if any from both sides
+  val.replace('/^\s+|\s+$/gm','');
+  var col=val.search(':');
+  
+  var predictstr=val;
+  if(col<0)  //not found any : ///start prediction
+  {
+     if(isNaN(val)){  return false; }
+     var len=val.length;
+     if(len==1)
+     {
+       predictstr='0'+val+':00';
+     }
+     else if(len==2)
+     {
+        var valint=parseInt(val);
+        if(val[0]=='0')
+        {
+          predictstr='00:'+val[1]+'0';
+        } 
+        else
+        {
+             if(valint>23)
+             {
+                 predictstr='0'+val[0]+':'+val[1]+'0';
+             }
+             else if(valint<=9) predictstr='0'+val+':00';
+                   else
+                     predictstr=val+':00';
+        }
+     }
+     else if(len==3)
+     {
+       if(parseInt(val[0])>2) predictstr='0'+val[0]+':'+val[1]+val[2];
+       else if(parseInt(val[0])==2 & parseInt(val[1])>3) predictstr='0'+val[0]+':'+val[1]+val[2];
+       else if(parseInt(val[1])==0) predictstr=val[0]+val[1]+':'+val[2]+'0';
+       else if(parseInt(val[1])==1) predictstr=val[0]+val[1]+':'+val[2]+'0';
+       else if(parseInt(val[2])>6) predictstr='0'+val[0]+':'+val[1]+val[2];
+       else if(parseInt(val[2])!=0) predictstr=val[0]+val[1]+':'+val[2]+'0';
+       else predictstr='0'+val[0]+':'+val[1]+val[2];
+     }
+     else if(len==4)
+     {
+         predictstr=val[0]+val[1]+':'+val[2]+val[3];
+     }
+  }
+  
+   arr1=predictstr.split(':');
+    ///alert(arr1);
+    if(arr1.length==2)
+     {
+       if(!isNaN(arr1[0]) & !isNaN(arr1[1]))
+       {
+         if(parseInt(arr1[0])>=0 & parseInt(arr1[0])<24 & (parseInt(arr1[1])>=0 & parseInt(arr1[1])<60))
+          {
+            same.value=predictstr;
+            return true;
+          }
+           else { return false;  }
+       }
+        else {  return false; }
+     }
+     else { return false;  }
+}
+      function checkSubmit()
+        {
+      
+        var attend_date =jQuery('#atten_dt').val();
+        var intime =jQuery('#in_time').val();
+        var outtime =jQuery('#out_time').val();
+        var val= checktime(jQuery('#in_time').val());
+        
+        var out = checktime(jQuery('#out_time').val());
+        //alert(intime);
+        //alert(outtime);
+        if(intime > outtime){
+         $("html, body").animate({ scrollTop: 0 }, "slow");
+         $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>InTime can't be Greater than OutTime").show();
+          
+        }
+       if(val === false){
+         $("html, body").animate({ scrollTop: 0 }, "slow");
+         $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Enter proper In time").show();
+                    
+         return false;     
+       }
+       if(out === false)  //not found any : ///start prediction
+       {
+          $("html, body").animate({ scrollTop: 0 }, "slow");
+          $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Enter proper Out time").show();
+          return false;  
+       }
+        if(attend_date === "")
+        {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Enter Attendance Date").show();
+        return false;
+        }
+        else if(intime.val()==="")
+        {
+         $("html, body").animate({ scrollTop: 0 }, "slow");
+         $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Enter In Time").show();
+          return false;
+
+        }
+         
+         
+    }
+
+ $('#in_time').keypress(function( e ) {
+    if(e.which === 32) 
+        return false;
+});   
+$('#out_time').keypress(function( e ) {
+    if(e.which === 32) 
+        return false;
+});   
+$( "#in_time ").on( "keydown", function( e ) {
+        
+    if (e.which !== 8  &&  e.which > 57 && e.which !==186 && e.which !==16 && e.which !==59) {
+        //display error message
+         $("html, body").animate({ scrollTop: 0 }, "slow");
+         $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Enter Digit Only").show();
+         $("html, body").animate({ scrollTop: 0 }, "slow");
+         return false;
+    }
+    });
+$( "#out_time ").on( "keydown", function( e ) {
+       
+    if (e.which !== 8  &&  e.which > 57 && e.which !==186 && e.which !==16 && e.which !==59) {
+        //display error message
+         $("html, body").animate({ scrollTop: 0 }, "slow");
+         $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Enter Digit Only").show();
+         $("html, body").animate({ scrollTop: 0 }, "slow");
+         return false;
+    }
+    });    
+      </script>
+
+
+          

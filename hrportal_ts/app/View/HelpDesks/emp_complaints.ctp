@@ -1,0 +1,328 @@
+<?php $auth = $this->Session->read('Auth');
+$ecode = $auth['MyProfile']['emp_code']; 
+?>
+<script>
+    $('#startdate').kendoDatePicker({
+        start: "year",
+        depth: "year",
+        format: "MMMM yyyy"
+    });
+    $('#kUI_multiselect_basic').kendoMultiSelect();
+    
+    function updatestatus1(fstatus, id) {
+        //alert(fstatus);
+        jQuery.ajax({
+            url: '<?php echo $this->webroot ?>HelpDesks/updatestatus/' + fstatus + '/' + id,
+            success: function (data) {
+                //alert(data);
+                window.location.reload();
+            }
+        });
+    }
+    
+    function getmodule(val) {
+
+        $.ajax({
+            type: "POST",
+            url: '<?php echo $this->webroot ?>tasks/module/' + val,
+            //data:'project_id='+val,
+            success: function (data) {
+                //alert(data);
+                $("#mname").html(data);
+            }
+        });
+    }
+    function getemp_list(val) {
+        $.ajax({
+            type: "POST",
+            url: '<?php echo $this->webroot ?>HelpDesks/emp_list/' +val,
+            //data:'project_id='+val,
+            success: function (data) {
+                //alert(data);
+                $("#list").html(data);
+            }
+        });
+    }
+    function get_comment(val) {
+        $.ajax({
+            type: "POST",
+            url: '<?php echo $this->webroot ?>HelpDesks/get_comments/' +val,
+            //data:'project_id='+val,
+            success: function (data) {
+                //alert(data);
+                $("#fist").html(data);
+            }
+        });
+    }
+    function make_task(val) {
+        $.ajax({
+            type: "POST",
+            url: '<?php echo $this->webroot ?>HelpDesks/get_ticket_details/' +val,
+            //data:'project_id='+val,
+            success: function (data) {
+                var values = jQuery.parseJSON(data);
+                $("#ticket_id").val(values[0].HelpDesk.id);
+                $("#ticket_type").val(values[0].HelpDesk.ticket_type);
+            }
+        });
+    }
+    
+</script>
+
+
+    
+<div id="page_content">
+    <div id="page_content_inner">
+        
+        <?php echo $flash = $this->Session->flash();?>
+            <div class="md-card">
+                <div class="md-card-toolbar">
+                            <div class="md-card-toolbar-actions">
+                                
+                               
+                            </div>
+                            <h3 class="md-card-toolbar-heading-text">
+                            <b>Ticket List
+                            </b>
+                            </h3>
+                        </div>
+               
+
+                <div class="md-card-content">
+                    <div class="uk-overflow-container uk-margin-bottom">
+                        <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair" id="ts_pager_filter">
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Ticket No</th>
+                                    <td>Complaint Type</th>
+                                    <th>Complaint Date</th>
+                                    <th>Priority</th>
+                                   
+                                    <th>Remarks</th>
+                                    <th>Attached Document</th>
+                                    <th>Action</th>
+                                    <th>Ticket Status</th>
+                                </tr>      
+                            </thead>
+                       
+                <tbody aria-live="polite" aria-relevant="all">
+                <?php $priority=array(0=>'Very High',1=>'High',2=>'Medium',3=>'Low');?>
+                <?php $statusnew=array(0=>'Pending',1=>'Pending',2=>'Pending',3=>'Pending',4=>'Pending',5=>'Pending',6=>'Complete');?>
+                      
+                <?php $j=1; ?>
+                  <?php foreach($assignedTask as $data) {?>
+                            <tr>
+                                <td class="uk-text-center"><span class="uk-text-small uk-text-muted uk-text-nowrap"><?php echo $j;?></span></td>
+                                <td>Ticket-<?php echo $data['HelpDesk']['ticket_id'];?></td>
+                                <td><?php echo $this->Common->getTicketCat($data['HelpDesk']['ticket_type']);?></td>
+                                <td class="uk-text-small"><?php echo $data['HelpDesk']['complaint_date']?></td>
+                                <td class="uk-text-small"><?php echo $priority[$data['HelpDesk']['priority']];?></td>
+                                <td><?php echo $data['HelpDesk']['remark']; ?></td>
+                                <?php if($data['HelpDesk']['proof_file'] != '') {?>
+                                <td><a target='blank' href=<?php echo $this->webroot."uploads/complaints/".$data['HelpDesk']['proof_file']; ?>>Click To Download</a></td>
+                                   <?php } else { ?> 
+                                <td> N/A </td>    
+                                <?php }?>
+                                <?php if($data['HelpDesk']['assigned'] == 1 && $data['HelpDesk']['assign_to'] == $auth['MyProfile']['emp_code'] && $data['HelpDesk']['comment_done'] == 0 ) {?>
+                                <td><a href="#add_comment" data-uk-modal="{ center:true }" ><button type="button" class="md-btn md-btn-flat uk-modal-close"  value="<?php echo $data['HelpDesk']['id'] ?>" onClick="return get_id(this.value);">Add Comment</button></a></td> 
+                                <?php }  else if($data['HelpDesk']['assigned'] == 0) { ?>
+                                <td>Not Assigned Yet</td>  
+                                <?php } else if($data['HelpDesk']['comment_done'] == 1){ ?>
+                                <td><a href="#view_comment" data-uk-modal="{ center:true }"><button type="button" class="md-btn md-btn-flat uk-modal-close"  value="<?php echo $data['HelpDesk']['id'] ?>" onClick="return get_comment(this.value);">View Comment</button></a></td>  
+                                <?php } else {?>
+                                <td> Assigned To - <?php echo $this->Common->findEmpName($data['HelpDesk']['assign_to']); ?></td>  
+                                <?php } ?>
+                                <td> <select id = "workstatus" readonly="readonly" disabled="disabled">
+                                        <option value="0" <?php if($data['HelpDesk']['current_status']==0){echo "selected";} ?>>Recorded</option>
+                                        <option value="1" <?php if($data['HelpDesk']['current_status']==1){echo "selected";} ?>>Taken</option>
+                                        <option value="2" <?php if($data['HelpDesk']['current_status']==2){echo "selected";} ?>>Working</option>
+                                        <option value="3" <?php if($data['HelpDesk']['current_status']==3){echo "selected";} ?>>Closed</option>
+                                        </select></td>  
+                                <td style="display: none"><input type="hidden" name ="id" id="cur_id" value="$data['HelpDesk']['id']"></input></td>
+                                
+                               <?php $j++;?>
+                            </tr>
+                           <?php }?>
+                        </tbody>
+                        </table>
+                    <div>
+                    <ul class="uk-pagination uk-pagination-right">
+                    <?php
+                      echo $this->Paginator->prev('Previous', array('tag' => 'li', 'escape' => false), '<a>Previous</a>', array('class' => 'uk-disabled', 'tag' => 'li', 'escape' => false));
+                      echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentLink' => true, 'currentClass' => 'uk-active', 'currentTag' => 'a'));
+                      echo $this->Paginator->next('Next', array('tag' => 'li', 'escape' => false), '<a>Next</a>', array('class' => 'uk-disabled', 'tag' => 'li', 'escape' => false));
+                    ?>
+                    </ul>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+
+<div id="new_issue1" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
+        <div class="uk-modal-dialog" style="top: -29px;">
+            <div id = "test"></div>
+        
+    </div>
+</div>
+
+
+<div class="uk-modal" id="assign_complaint">
+    <div class="uk-modal-dialog">
+       <?php echo $this->Form->create('HelpDesks', array('action' =>'assignto','id'=>'form_validation','class' => 'uk-form-stacked' , 'Onsubmit'=>'')); ?>
+                         <h3 class="heading_a">Please Select Employee.</h3>
+
+                <div class="uk-grid data-uk-grid-margin">
+                    <div class="uk-width-medium-1-2">
+                        <div class="parsley-row" id ="list" >
+                                                       
+                        </div>
+                    </div>
+                </div>
+        
+        <div class="uk-modal-footer uk-text-right">
+            <button type="submit" name="submit" class="md-btn md-btn-success" href="#">Submit</button>
+            <button type="button" class="md-btn md-btn-flat uk-modal-close">Close</button>
+        </div>
+         <?php echo $this->Form->end();?>
+    </div>
+</div>
+
+<div class="uk-modal" id="add_comment">
+    <div class="uk-modal-dialog">
+        <div>
+              <?php echo $this->Form->create('HelpDesks', array('action' =>'add_comment','id'=>'form_validation','class' => 'uk-form-stacked' , 'Onsubmit'=>'')); ?>
+                         <h3 class="heading_a">Add Your Comment.</h3>
+                        Add Comment : <textarea name = "ticket_comment" palceholder = "Add Your Comment Here" class="md-input"></textarea>
+                        <span id="get_id"></span>
+        </div>
+        
+        <div class="uk-modal-footer uk-text-right">
+            <button type="submit" name="submit" class="md-btn md-btn-success" href="#">Submit</button>
+            <button type="button" class="md-btn md-btn-flat uk-modal-close">Close</button>
+        </div>
+       
+        <?php echo $this->Form->end();?>
+        
+    </div>
+</div>
+
+<div class="uk-width-medium-1-1">
+    <div id="view_comment" class="uk-modal">
+        <div class="uk-modal-dialog uk-modal-dialog-large">
+                        
+            <span  id = "fist" class="verflow container"></span>            
+            <div class="uk-overflow-container"></div>
+            <div class="uk-modal-footer uk-text-right">
+            <button type="button" class="md-btn md-btn-flat uk-modal-close">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="uk-width-medium-1-1">
+    <div id="make_task" class="uk-modal">
+        <div class="uk-modal-dialog uk-modal-dialog-large" id = "">
+            <span class="verflow container"></span>            
+            <div class="uk-overflow-container"></div>           
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function updatestatus(status,id,ecode){
+      jQuery.ajax({
+        url: '<?php echo $this->webroot ?>tasks/updatestatus/'+status+'/'+id+'/'+ecode,
+        success: function(data){
+            //alert(data);
+           window.location.reload();
+        }
+    });
+       
+
+    }
+
+    function Get_Details(id)
+    {
+    jQuery.ajax({
+        url: '<?php echo $this->webroot ?>tasks/view2/'+id,
+        success: function(data){
+            jQuery('.HRcontent').html(data);
+        }
+    });
+    }
+  
+    function Get_Details2(id)
+    {
+    //alert(id);
+    jQuery.ajax({
+        url: '<?php echo $this->webroot ?>tasks/remark/'+id,
+        success: function(data){
+            jQuery('.HRcontent1').html(data);
+        }
+    });
+    }
+
+   function Get_Details5(id)
+    {
+    //alert(id);
+    jQuery.ajax({
+        url: '<?php echo $this->webroot ?>tasks/alert/'+id,
+        success: function(data){
+            //alert(data);
+            jQuery('.HRcontent5').html(data);
+        }
+    });
+    }   
+
+    function tooltip(id){
+         $.get('<?php echo $this->webroot;?>tasks/tooltip/'+id, function(data){
+        $('#dialog_'+id).html(data);
+         //$('[data-toggle="dialog"]').tooltip();           
+        });
+
+    }
+    function tooltip_left(id){
+        $('#dialog_'+id).html('');
+
+    }
+    
+    function get_id(id){
+        $('#get_id').html('<input type = "hidden" name = "ticket_id" value =' +id +'></input>');
+
+    }
+
+
+</script>
+<script type="text/javascript">    
+
+    function getEmployee(val) {
+        $.ajax({
+            type: "POST",
+            url: '<?php echo $this->webroot ?>moms/employeelist/' + val,
+            //data:'project_id='+val,
+            success: function (data) {
+                //alert(data);
+                $("#empList").html(data);
+            }
+        });
+    }
+</script>  
+<script type="text/javascript">    
+
+    function getForm() {
+        $.ajax({
+            type: "POST",
+            url: '<?php echo $this->webroot ?>HelpDesks/task_form',
+            //data:'project_id='+val,
+            success: function (data) {
+                //alert(data);
+                $("#test").html(data);
+            }
+        });
+    }
+</script>  
+
+
+

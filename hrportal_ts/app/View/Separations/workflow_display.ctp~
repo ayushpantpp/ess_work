@@ -1,0 +1,101 @@
+
+<div id="page_content" role="main">
+    <div id="page_content_inner">
+        <h3 class="heading_b uk-margin-bottom">Separation Work Flow</h3>
+       <?php echo $flash = $this->Session->flash(); ?>
+        <div id="alerts"></div>
+        <div class="md-card">
+            <div class="md-card-content large-padding">
+<?php echo $this->Form->create('tempcomp', array('inputDefaults' => array(
+           'label' => false,'div' => false, 'error' => array( 'wrap' => 'span','class' => 'my-error-class' )),
+           'url' => array('controller' => 'TemporaryComponents', 'action' => 'add'), 'id' => 'tempcompid', 'name' => 'tempcomp'));
+        ?>
+
+                <div class="md-card-content" data-uk-grid-margin>
+                    <div class="uk-overflow-container" role="main">
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="clearfix"></div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                    <div class="x_content">
+					<div data-uk-grid-margin="" class="uk-grid">
+						 <?php echo $this->Form->create('fwleave', array('inputDefaults' => array(
+           'label' => false,'div' => false, 'error' => array( 'wrap' => 'span','class' => 'my-error-class' )),
+         'url' => array('controller' => 'separations', 'action' => 'saveinfomation'), 'id' => 'fwleaveid', 'name' => 'fwleavename'));
+        ?>
+
+                 <?php  $fwemplist = $this->Common->findLevel(); ?>
+
+
+
+					<div data-uk-grid-margin="" class="uk-grid">
+						<div class="uk-width-medium-1-2 uk-row-first">
+						    <div class="parsley-row">
+
+ <input type="hidden" value ="<?php echo $separation; ?>" name="data[SeparationWorkflow][separation_id]"> 
+                           <?php echo $this->Form->input('SeparationWorkflow.emp_code', array('type' => 'select', 'label' => false,'options' => $fwemplist, 'class' => 'md-input','id'=>'fwlvempcode')); ?>
+
+
+
+<?php $dept_name = $this->Common->findAllDepartmentName($auth['MyProfile']['comp_code']);?>
+						        <label for="req_cat">Department :</label>
+<?php echo $this->Form->input('Emp_department', array('type' => 'hidden', 'value'=>$_SESSION['Auth']['MyProfile']['dept_code'])); ?>
+                                    
+						       <div class="input text"><div class="md-input-wrapper md-input-filled"><input type="text" id="first_name" required="required" readonly="readonly" class="md-input" value="<?php echo $this->common->getdepartmentbyid($_SESSION['Auth']['MyProfile']['dept_code']);?>" data-parsley-id="4"><span class="md-input-bar"></span></div></div>                                  
+						     </div>
+					       </div>
+					       <div class="uk-width-medium-1-2">
+						    <div class="parsley-row">
+						       <?php echo $this->Form->submit('SAVE', array('onClick' => 'return checkSubmit()','name'=>'data[SeparationWorkflow][save]','class'=>'md-btn md-btn-success')); ?>
+ <a class="md-btn md-btn-danger" href="<?php echo $this->webroot;?>/separations" title="Click to Cancel.">Cancel</a>
+						      </div>
+					       </div>
+					</div>
+
+<?php $this->Form->end(); ?>
+
+                       <script type="text/javascript">
+    function checkSubmit()
+    {
+        if ($("#fwlvempcode").val() == '')
+        {
+            alert("Select the employee name.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+<script>
+    var availableTags = [
+        "ActionScript",
+        "AppleScript",
+        "Asp",
+        "BASIC",
+        "C",
+        "C++",
+        "Clojure",
+        "COBOL",
+        "ColdFusion",
+        "Erlang",
+        "Fortran",
+        "Groovy",
+        "Haskell",
+        "Java",
+        "JavaScript",
+        "Lisp",
+        "Perl",
+        "PHP",
+        "Python",
+        "Ruby",
+        "Scala",
+        "Scheme"
+    ];
+    $(document).ready(function () {
+        $("#autocomplete").autocomplete({
+            source: availableTags
+        });
+    });
+</script>
+

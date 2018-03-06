@@ -1,0 +1,13 @@
+IP : 192.168.5.39
+
+Subnet Mask: 255.255.255.0
+
+Defualt Gateway: 192.168.5.1
+
+
+Primary DNS: 192.168.5.1   -- Workgroup
+             192.168.1.245 -- Domain
+
+Secondary DNS: 4.2.2.2
+
+

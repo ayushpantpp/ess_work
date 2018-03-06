@@ -1,0 +1,675 @@
+<div id="page_content">
+    <div id="page_heading" data-uk-sticky="{ top: 48, media: 960 }">
+            
+            <h1>Leave Form</h1>
+            
+        </div>
+    
+    
+    <div id="page_content_inner">
+        <?php echo $flash = $this->Session->flash(); ?>
+        <div id="alerts"></div>
+       <div class="md-card">  
+            <div class="md-card-content large-padding">
+                 <?php 
+                 
+                 if(!empty($EditCaseReceive)){
+                     foreach($EditCaseReceive as $rec);
+                 }?>
+                <?php 
+                //echo $this->Form->create('doc', array('url' =>array('controller' => 'Boards', 'action' =>'req_receive_save'),'type' => 'file','id'=>'form_validation','class' => 'uk-form-stacked' )); 
+                echo $this->Form->create('doc', array('url' =>array('controller' => 'Leaves', 'action' =>'add'),'type' => 'file','name'=>'Form1','id'=>'form_validation','class' => 'uk-form-stacked' )); 
+                //echo $this->form->create('Leave', array('url' => '','name'=>'Form1','action'=>'add','enctype' => 'multipart/form-data','inputDefaults' => array('label' => false, 'div' => false, 'error' => array('wrap' => 'span', 'class' => 'form-horizontal form-label-left'))));
+                $auth=$this->Session->read('Auth');  $options = $this->Common->option_name($auth['MyProfile']['emp_nm_ttl']);
+                ?>
+                <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-2" >
+                            <div class="parsley-row">
+                                <label for="req_cat">Employee Name <span class="req">*</span></label>
+                               <?php 
+                               echo $this->form->input('user_name', array('label'=>false, 'type' => 'text', 'value' =>$options[$auth['MyProfile']['emp_nm_ttl']].$auth['MyProfile']['emp_full_name'].'-'.$auth['MyProfile']['emp_id'],'class' => "md-input",'readonly'=>true,'required'=>true,'id'=>'first_name'));
+                               ?>
+                                  
+                             </div>
+                       </div>
+                       <div class="uk-width-medium-1-2">
+                            <div class="parsley-row">
+                                <label for="department">Employee Department <span class="req">*</span></label>
+                                <?php   $department=$this->Common->getdepartmentbyid($auth['MyProfile']['dept_code']);?>
+                                <?php echo $this->form->input('user_name', array('label'=>false, 'type' => 'text', 'readonly' => true, 'value' =>$department,'class' => "md-input",'required'=>true,'id'=>'first_name')); ?>
+                        </div>
+                       </div>
+                </div>
+                    
+                
+                      <div class="uk-grid" data-uk-grid-margin > 
+                          
+                    <div class="uk-width-medium-1-2">
+                        <div class="parsley-row">
+                            <label for="resp" class="fixed">Employee Designation <span class="req fixed">*</span></label>
+                            <?php 
+                            $desgName =$this->Common->findDesignationName($auth['MyProfile']['desg_code'],$auth['MyProfile']['comp_code']);
+                            echo $this->form->input('user_name', array('label'=>false, 'type' => 'text', 'readonly' => 'readonly', 'value' => $desgName,'class' => "md-input",'required'=>true,'id'=>'first_name')); 
+                            ?>                
+                        </div>
+                    </div>
+                    <div class="uk-width-medium-1-2">
+                        <div class="parsley-row">
+                            <label for="subject">Leave Type <span class="req">*</span></label>
+                            <?php //echo $this->form->textarea('subject', array('label'=>false,'required'=>true,'class'=>"md-input")); ?>                
+                            <?php 
+                            $v = $this->Common->option_attribute_name($gender);
+					$leave_name['PAR0000011']='LWP LEAVE';
+					if($v[$gender] == 'FEMALE'){
+					$leave_name['PAR0000006']='MATERNITY LEAVE';
+					}
+					asort($leave_name);
+                                                   
+                                        ?>
+                      <?php echo $this->form->input('leave_code', array('class' => "md-input", 'label'=>false,'type' => 'select' ,'options' => array_map('strtoupper', $leave_name), 'default' => 'C', 'id' =>'leave')); ?>
+                        </div>
+                    </div>
+                      </div>
+                <div class="uk-grid" data-uk-grid-margin > 
+                    <div class="uk-width-medium-1-2">
+                            <div class="parsley-row">
+                                <label for="dor">Start Date<span class="req">*</span></label>
+                                <?php 
+                                //echo $this->form->input('doreq', array('type' => "text",'label'=>false,'required'=>true,'data-uk-datepicker'=>'{format:"DD-MM-YYYY"}','value'=>$dos, 'class' => "md-input")); 
+                                echo $this->form->input('dt_start_date', array('label'=>false,'data-uk-datepicker'=>'{format:"DD-MM-YYYY"}','class'=>"md-input ",'type' => 'text', 'id' => 'startdate','readonly'=>true));
+                                ?>
+                                <span class="md-input-bar"></span>
+                        </div>
+                    </div>
+                                                  
+                               <div class="uk-width-medium-1-2">
+                                   <div class="parsley-row">
+                                    <label for="act_off">Start Duration<span class="req">*</span></label>
+                                    <input type="radio" class="iCheck-helper"  name="ch_st_daylength" id="ch_st_daylengthf" value="F" checked="checked"  >
+                                    <label for="ch_st_daylengthf" class="inline-label">Full Day</label>
+                                    <input type="radio"  name="ch_st_daylength" id="ch_st_daylengthh" class="flat" style="display:block !important" value="H"  >
+                                    <label for="ch_st_daylengthh" class="inline-label">Half Day</label>
+                                    <?php echo $this->form->input('ch_st_dayhalf', array('class' => "form-control s-form-item s-form-all", 'label'=>false,'type' => 'select', 'options' => array('F'=>"FIRST HALF",'S'=>"SECOND HALF"), 'default' => 'F', 'id' =>'st_half_type_div','style'=>'display:none;')); ?>
+                                    </div>
+                                </div>
+                    <div class="uk-width-medium-1-2">
+                            <div class="parsley-row">
+                                <label for="act_off">Start Duration<span class="req">*</span></label>
+                                
+                                <input type="radio" class="flat" name="ch_ed_daylength" id="ch_ed_daylengthf" value="F" checked="checked" >
+                                <label for="ch_st_daylengthf" class="inline-label">Full Day</label>
+                                <input type="radio" class="flat" name="ch_ed_daylength" id="ch_ed_daylengthh" value="H" >
+                                <label for="ch_st_daylengthh" class="inline-label">Half Day</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-grid" data-uk-grid-margin > 
+                    <div class="uk-width-medium-1-2">
+                            <div class="parsley-row">
+                                <label for="dorc">End Date<span class="req">*</span></label>
+                                <?php 
+                                //echo $this->form->input('dorec', array('type' => "text",'label'=>false,'required'=>true,'data-uk-datepicker'=>'{format:"DD-MM-YYYY"}','value'=>$dos, 'class' => "md-input")); 
+                                echo $this->form->input('dt_end_date', array('label'=>false,'data-uk-datepicker'=>'{format:"DD-MM-YYYY"}','class'=>"md-input ",'type' => 'text', 'id' => 'enddate','readonly'=>true, 'default' => $_POST['Leave']['dt_end_date']));
+                                ?>
+                                
+                        </div>
+                    </div>
+                    <div class="uk-width-medium-1-2">
+                            <div class="parsley-row">
+                                <label for="act_off">End Duration<span class="req">*</span></label>
+                                
+                                <input type="radio" class="flat" name="ch_ed_daylength" id="ch_ed_daylengthf" value="F" checked="checked" >
+                                <label for="ch_st_daylengthf" class="inline-label">Full Day</label>
+                                <input type="radio" class="flat" name="ch_ed_daylength" id="ch_ed_daylengthh" value="H" >
+                                <label for="ch_st_daylengthh" class="inline-label">Half Day</label>
+                                
+                        </div>
+                    
+                    </div>
+                    
+                </div> 
+                
+                <div class="uk-grid" data-uk-grid-margin></div>
+                <div class="uk-grid">
+                    <div class="uk-width-1-3 uk-margin-top">                            
+                        <button type="submit" name="submit" value="submit" class="md-btn md-btn-success" href="#">Save</button>                    
+                    </div>
+                    <div class="uk-width-1-3 uk-margin-top">                            
+                        <a class="md-btn md-btn-primary" href="<?php echo $this->Html->url('/Boards/req_receive') ?>">Cancel</a>                       
+                    </div>
+                </div>
+                <?php echo $this->Form->end();?>
+            </div>
+           </div>
+   </div>
+</div>
+<script type="text/javascript"> 
+
+/** Days to be disabled as an array */
+var disableddates = ["26-01-2017", "27-01-2017", "28-01-2017", "29-01-2017"];
+
+
+function DisableSpecificDates(date) {
+    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+    return [disableddates.indexOf(string) == -1];
+  }
+
+
+$(function() {
+  $("#startdate").datepicker({
+    beforeShowDay: DisableSpecificDates
+  });
+});
+
+
+</script>
+        <script type="text/javascript" >
+            
+            function post()
+            {
+                var tot = $('#total_leave').val();
+                var leave_code = jQuery('#leave').val();
+                var leave_image = jQuery('#leave_image').val();
+                jQuery.ajax({
+                    url: '<?php echo $this->webroot ?>leaves/getCode/',
+                    success: function (data) {
+
+                        var obj = jQuery.parseJSON(data);
+                        $.each(obj, function (key, value) {
+
+                            if ((leave_code === value.LeaveConfiguration.leave_code || leave_code === value.LeaveConfiguration.leave_code) && tot > 2) {
+
+                                if (leave_image === '') {
+                                    $("html, body").animate({scrollTop: 0}, "slow");
+                                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Please Upload Medical Certificate").show();
+                                    $("html, body").animate({scrollTop: 0}, "slow");
+                                    return false;
+                                }
+                            }
+
+                        });
+                    }
+
+                });
+
+
+                document.Form1.action = "postLeaves";
+                return CheckLeaveCount();
+            }
+
+
+            jQuery(document).keydown(function (e) {
+                if (e.keyCode == 90 && e.altKey) {
+                    history.go(-1);
+                }
+
+            });
+            jQuery(document).ready(function () {
+
+
+
+                // $('#ch_st_daylengthh').hide();
+                //$('#ch_ed_daylengthh').hide();
+                jQuery("#startdate").datepicker({
+                    //inline: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    autoclose: true,
+                    format: 'dd-mm-yyyy',
+                    onSelect: function (selected) {
+                        jQuery("#enddate").datepicker("option", "minDate", selected);
+                        var diff = dateDiff(jQuery('#startdate').datepicker("getDate"));
+                        jQuery('#enddate').datepicker("getDate");
+                        if (jQuery('#enddate').val() != "") {
+                            var diff = dateDiff(jQuery('#startdate').datepicker("getDate"),
+                                    jQuery('#enddate').datepicker("getDate"));
+                            //custome starts
+                            var medical = jQuery('#leave').val();
+                            var tot = $('#total_leave').val();
+
+                            if (medical === 'PAR0000003' && tot > 3) {
+                                jQuery('#leave_image,#image').show();
+
+                            } else {
+                                jQuery('#leave_image,#image').hide();
+                            }
+                            //custome ends
+                        }
+                    }
+
+                });
+                jQuery("#enddate").datepicker({
+                    inline: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    autoclose: true,
+                    orientation: "right bottom",
+                    format: 'dd-mm-yyyy',
+                    onSelect: function (selected) {
+                        jQuery("#startdate").datepicker("option", "maxDate", selected);
+                        var diff = dateDiff(jQuery('#startdate').datepicker("getDate"), jQuery('#enddate').datepicker("getDate"));
+                        //custome starts
+                        var medical = jQuery('#leave').val();
+                        var tot = $('#total_leave').val();
+
+                        if (medical === 'PAR0000003' && tot > 3) {
+                            jQuery('#leave_image,#image').show();
+
+                        } else {
+                            jQuery('#leave_image,#image').hide();
+                        }
+                        //custome ends
+                    }
+                });
+
+                jQuery('#enddate').change(function () {
+
+                    var diff = dateDiff(jQuery('#startdate').datepicker("getDate"), jQuery('#enddate').datepicker("getDate"));
+                    var medical = jQuery('#leave').val();
+                    var tot = $('#total_leave').val();
+                    jQuery.ajax({
+                        url: '<?php echo $this->webroot ?>leaves/getCode/',
+                        success: function (data) {
+
+                            var obj = jQuery.parseJSON(data);
+                            $.each(obj, function (key, value) {
+
+                                if (medical === value.LeaveConfiguration.leave_code && tot > value.LeaveConfiguration.file_upload_no) {
+                                    $('#leave_image,#image').show();
+                                    if (leave_image === '') {
+                                        $("html, body").animate({scrollTop: 0}, "fast");
+                                        $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Please Upload Medical Certificate").show();
+                                        $("html, body").animate({scrollTop: 0}, "fast");
+                                        return false;
+                                    }
+                                }
+                            });
+                            //custome starts
+                            var medical = jQuery('#leave').val();
+                            var tot = $('#total_leave').val();
+
+                            if (medical === 'PAR0000003' && tot > 3) {
+                                jQuery('#leave_image,#image').show();
+
+                            } else {
+                                jQuery('#leave_image,#image').hide();
+                            }
+                            //custome ends
+                        }
+
+                    });
+
+                });
+
+                jQuery('#startdate').change(function () {
+                    if (jQuery('#enddate') != "") {
+                        var diff = dateDiff(jQuery('#startdate').datepicker("getDate"),
+                                jQuery('#enddate').datepicker("getDate"));
+                        //custome starts
+                        var medical = jQuery('#leave').val();
+                        var tot = $('#total_leave').val();
+
+                        if (medical === 'PAR0000003' && tot > 3) {
+                            jQuery('#leave_image,#image').show();
+
+                        } else {
+                            jQuery('#leave_image,#image').hide();
+                        }
+                        //custome ends
+                    }
+
+                });
+
+                jQuery('input[name=ch_st_daylength]').change(function () {
+                    dateDiff(jQuery('#startdate').datepicker("getDate"), jQuery('#enddate').datepicker("getDate"))
+                });
+                jQuery('input[name=ch_ed_daylength]').change(function () {
+                    dateDiff(jQuery('#startdate').datepicker("getDate"), jQuery('#enddate').datepicker("getDate"))
+                });
+
+                /* function calculateDate() {
+                 dateDiff(jQuery('#startdate').datepicker("getDate"), jQuery('#enddate').datepicker("getDate"));
+                 if (jQuery("#startdate").val() != '' && jQuery("#enddate").val() != '') {
+                 var ed_date = jQuery('input[name=ch_ed_daylength]:checked').val();
+                 var st_date = jQuery('input[name=ch_st_daylength]:checked').val();
+                 if (ed_date == 'H' && st_date != 'H') {
+                 jQuery('#total_leave').val(jQuery('#total_leave').val() - 0.5);
+                 }
+                 if (st_date == 'H' && ed_date != 'H') {
+                 jQuery('#total_leave').val(jQuery('#total_leave').val() - 0.5);
+                 }
+                 if (st_date == 'H' && ed_date == 'H') {
+                 jQuery('#total_leave').val(jQuery('#total_leave').val() - 1.0);
+                 }
+                 }
+                 }*/
+
+            });
+        </script>
+        <script>
+            function dateDiff(startDate, endDate) {
+
+                var difdate = 0;
+                var difdate1 = 0;
+                if (jQuery("#startdate").val() == '' && jQuery("#enddate").val() == '') {
+
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>Please select start date and end date").show();
+                    jQuery('#total_leave').val('');
+                    return false;
+                }
+                if (jQuery("#startdate").val() == '') {
+
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>Please select Start Date").show();
+                    jQuery('#total_leave').val('');
+                    return false;
+                }
+                if (endDate && startDate) //make sure we don't call .getTime() on a null
+                    difdate = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
+
+
+                if (jQuery('#enddate').val() != "") {
+                    difdate1 = difdate + 1;
+                }
+
+                var ed_date = jQuery("input[name='ch_ed_daylength']:checked").val();
+                var st_date = jQuery("input[name='ch_st_daylength']:checked").val();
+                if (ed_date == 'H' && st_date != 'H') {
+                    difdate1 = difdate1 - 0.5;
+                }
+                if (st_date == 'H' && ed_date != 'H') {
+                    difdate1 = difdate1 - 0.5;
+                }
+                if (st_date == 'H' && ed_date == 'H') {
+                    difdate1 = difdate1 - 1.0;
+                    if (difdate1 == 0) {
+                        $("html, body").animate({scrollTop: 0}, "slow");
+                        $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>You cannot claim Two half day for Same Date").show();
+                        $('#ed_half_type_div').hide();
+                        jQuery("input[name='ch_ed_daylength']").val(unchecked);
+
+
+                    }
+                }
+                jQuery('#vc_date_diff').val(difdate1);
+                //alert(difdate1);
+                if (difdate < 0) {
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Total Days cannot be less than 0! Please Enter Proper Dates").show();
+                    jQuery('#total_leave').val('');
+                    return false;
+                } else {
+                    jQuery('#total_leave').val(difdate1);
+
+                }
+                var leavetyp = $("#leave").val();
+
+
+                //	jQuery.ajax({
+                //        url: '<?php echo $this->webroot ?>leaves/getleaveConfi/',
+                //        
+                //        success: function(data){
+                var w = <?php echo json_encode($week_off);?>;
+                var listweek = Object.keys(w).map(function (k) {
+                    return w[k]
+                });
+
+                //alert(leavetyp);
+
+
+                var all_dates = getDates(startDate, endDate);
+                jQuery(all_dates).each(function (e, v) {
+                    //check holidays
+                    var holidays = <?php echo json_encode($holidays);?>;
+                    var dt = v.getFullYear() + '-' + ("0" + (v.getMonth() + 1)).slice(-2) + '-' + ("0" + v.getDate()).slice(-2);
+                    var hol = Object.keys(holidays).map(function (k) {
+                        return holidays[k]
+                    });
+                    console.log(hol);
+                    if (jQuery.inArray(dt, hol) !== -1) {
+                        jQuery('#total_leave').val(jQuery('#total_leave').val() - 1);
+                    }
+                    //check week holidays
+                    var week_holidays = <?php echo json_encode($week_holidays);?>;
+                    var dtw = v.getFullYear() + '-' + ("0" + (v.getMonth() + 1)).slice(-2) + '-' + ("0" + v.getDate()).slice(-2);
+                    var holw = Object.keys(week_holidays).map(function (k) {
+                        return week_holidays[k]
+                    });
+                    console.log(holw);
+                    if (jQuery.inArray(dtw, holw) !== -1) {
+                        jQuery('#total_leave').val(jQuery('#total_leave').val() - 1);
+
+                    }
+                });
+
+            }
+
+            //});
+
+            // }
+            $(window).load(function () {
+
+                var type = $('#leave').val();
+            
+                var tot = $('#total_leave').val();
+                jQuery.ajax({
+                    url: '<?php echo $this->webroot ?>leaves/getleaveConfi/',
+                    success: function (data) {
+                        
+                        var obj = jQuery.parseJSON(data);
+                        $.each(obj, function (key, value) {
+                           
+                              if (value.LeaveConfiguration.leave_code == type && value.LeaveConfiguration.half_day_chk == 0) {
+                                $('#leave_image,#image').hide();
+                                $('#ch_st_daylengthh').parent().show();
+                                $('#ch_ed_daylengthh').parent().show();
+                            } else if (value.LeaveConfiguration.leave_code == type && value.LeaveConfiguration.half_day_chk == 1) {
+                                if (value.LeaveConfiguration.file_upload == 1)
+                                {
+                                    if (tot > value.LeaveConfiguration.file_upload_no) {
+                                        $('#leave_image,#image').show();
+                                    } else {
+                                        $('#leave_image,#image').hide();
+                                    }
+                                        
+                                    $('#ch_st_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                    $('#ch_ed_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                    $('#ch_st_daylengthh').parent().parent().hide();
+                                    $('#ch_ed_daylengthh').parent().parent().hide();
+                                } else
+                                {
+                                    $('#leave_image,#image').hide();
+                                    $('#ch_st_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                    $('#ch_ed_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                    $('#ch_st_daylengthh').parent().parent().hide();
+                                    $('#ch_ed_daylengthh').parent().parent().hide();
+
+                                }
+                            }
+                        });
+                    }
+
+                });
+
+
+            });
+
+            $('#leave').change(function () {
+
+                var stdate = jQuery('#startdate').val();
+                var endate = jQuery('#enddate').val();
+                //alert(stdate);alert(endate);
+                if (stdate !== '' && endate !== '') {
+
+                    var diff = dateDiff(jQuery('#startdate').datepicker("getDate"),
+                            jQuery('#enddate').datepicker("getDate"));
+                }
+
+
+                jQuery('input[name=ch_st_daylength]').change(function () {
+                    dateDiff(jQuery('#startdate').datepicker("getDate"), jQuery('#enddate').datepicker("getDate"))
+                });
+                jQuery('input[name=ch_ed_daylength]').change(function () {
+                    dateDiff(jQuery('#startdate').datepicker("getDate"), jQuery('#enddate').datepicker("getDate"))
+                });
+                var type = $('#leave').val();
+
+                var tot = $('#total_leave').val();
+                jQuery.ajax({
+                    url: '<?php echo $this->webroot ?>leaves/getleaveConfi',
+                    success: function (data) {
+
+                        var obj = jQuery.parseJSON(data);
+                        $.each(obj, function (key, value) {
+
+                            if (value.LeaveConfiguration.leave_code == type && value.LeaveConfiguration.half_day_chk == 0) {
+                                if (value.LeaveConfiguration.leave_type === 'EL' && value.LeaveConfiguration.leave_code === type) {
+                                    $("#startdate").datepicker("option", "maxDate", '0');
+                                } else {
+                                    $("#startdate").datepicker("option", "maxDate", null);
+                                }
+                                $('#leave_image,#image').hide();
+                                $('#ch_st_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                $('#ch_ed_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                $('#ch_st_daylengthh').parent().parent().show();
+                                $('#ch_ed_daylengthh').parent().parent().show();
+                            } else if (value.LeaveConfiguration.leave_code == type && value.LeaveConfiguration.half_day_chk == 1) {
+                                if (value.LeaveConfiguration.leave_type === 'EL' && value.LeaveConfiguration.leave_code === type) {
+                                    $("#startdate").datepicker("option", "maxDate", '0');
+                                } else {
+                                    $("#startdate").datepicker("option", "maxDate", null);
+                                }
+                                if (value.LeaveConfiguration.file_upload == 1)
+                                {
+                                    if (tot > value.LeaveConfiguration.file_upload_no) {
+                                        $('#leave_image,#image').show();
+                                    } else {
+                                        $('#leave_image,#image').hide();
+                                    }
+
+                                    $('#ch_st_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                    $('#ch_ed_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                    $('#ch_st_daylengthh').parent().parent().hide();
+                                    $('#ch_ed_daylengthh').parent().parent().hide();
+                                } else
+                                {
+                                    $('#leave_image,#image').hide();
+                                    $('#ch_st_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                    $('#ch_ed_daylengthf').parent().find('.iCheck-helper').trigger('click');
+                                    $('#ch_st_daylengthh').parent().parent().hide();
+                                    $('#ch_ed_daylengthh').parent().parent().hide();
+
+                                }
+                            }
+
+                            if (value.LeaveConfiguration.leave_type === 'SL' && value.LeaveConfiguration.leave_code === type) {
+                                $("#startdate").datepicker("option", "maxDate", '0');
+                            } else
+                            {
+
+                            }
+
+                        });
+                    }
+                });
+
+            });
+            function CheckLeaveCount()
+            {
+
+                var tot = $('#total_leave').val();
+                var leave_code = jQuery('#leave').val();
+                var leave_image = jQuery('#leave_image').val();
+                jQuery.ajax({
+                    url: '<?php echo $this->webroot ?>leaves/getCode/',
+                    success: function (data) {
+
+                        var obj = jQuery.parseJSON(data);
+                        $.each(obj, function (key, value) {
+
+                            if ((leave_code === value.LeaveConfiguration.leave_code || leave_code === value.LeaveConfiguration.leave_code) && tot > 2) {
+
+                                if (leave_image === '') {
+                                    $("html, body").animate({scrollTop: 0}, "slow");
+                                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Please Upload Medical Certificate").show();
+                                    $("html, body").animate({scrollTop: 0}, "slow");
+                                    return false;
+                                }
+                            }
+
+                        });
+                    }
+
+                });
+
+                var leave_id = jQuery('#leave').val();
+
+                jQuery("#bal_leave_" + leave_id).text().trim();
+                jQuery('#total_leave').val();
+                var doc = $('#leave_image').val();
+                var medical = jQuery('#leave').val();
+                var tot = $('#total_leave').val();
+                if (jQuery('#total_leave').val() === '') {
+
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Please Enter Leave Date.!").show();
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    return false;
+                } else if (jQuery('#total_leave').val() == 0) {
+
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Total Days cannot be less than 0! Please Enter Proper Dates").show();
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    return false;
+
+                } else if (jQuery('#total_leave').val() < 0) {
+
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Total Days cannot be less than 0! Please Enter Proper Dates").show();
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    return false;
+
+                } else if (parseInt(jQuery('#total_leave').val().trim()) > (parseInt(jQuery("#bal_leave_" + leave_id).text().trim()) - parseInt(jQuery("#pending_leave_" + leave_id).text().trim()))) {
+
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>You can't apply " + jQuery('#total_leave').val() + " leaves in " + jQuery('#bal_leave_' + leave_id).text().trim() + " Balance Leaves and " + jQuery('#pending_leave_' + leave_id).text().trim() + " Pending Leaves.").show();
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    return false;
+                } else if (jQuery('#total_leave').val() == 'NaN') {
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Please Enter Start Date.!").show();
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    return false;
+                } else if ($('#LeaveVcLeaveReason').val() == "") {
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Please Enter Leave Reason").show();
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    return false;
+                } else if (medical === value.LeaveConfiguration.leave_code && tot > 2 && doc == "") {
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#alerts").html("<span class='closebtn' onclick='$(this).parent().fadeOut()'>X</span>Please Upload Medical Certificate").show();
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    return false;
+                } else
+                {
+                    return true;
+                }
+            }
+        </script>
+    </div>
+
+
+
+    <div id="popup1" class="HRoverlay">
+        <div class="HRpopup">
+            <a class="HRclose" href="#">×</a>
+            <div class="HRcontent"> 
+                <div id="container" style="width: 600px; height: 400px; margin: 0 auto"></div>
+            </div>    
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    </script>

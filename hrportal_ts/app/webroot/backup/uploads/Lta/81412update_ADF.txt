@@ -1,0 +1,12 @@
+conn app/ebizapp;
+
+update app$servr$loc set SRVR_LOC_RES_INSTALL_PATH='E:/DEPLOYMENT/Resource/',SRVR_LOC_AS_RPT_PATH='E:/DEPLOYMENT/Report/',SRVR_LOC_DOC_ATTACH_PATH='E:/DEPLOYMENT/DOCS/',SRVR_LOC_IMG_ATTACH_PATH='E:/DEPLOYMENT/Images/Item/';
+
+
+update app$servr$loc set 
+SERVR_LOC_IP='192.2.2.55',SERVR_LOC_SRVR_ID='192.2.2.55',SRVR_LOC_AS_IP='192.2.2.55',SRVR_LOC_AS_USR_NM='weblogic',SRVR_LOC_AS_USR_PWD='weblogic1';
+ 
+
+ 
+Commit;
+

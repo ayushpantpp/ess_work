@@ -1,0 +1,142 @@
+<style>
+    /*    .ForwardLeave{  color: #329ACF; font-weight:bold;}
+        .PendingLeave{ color: #DF8040; font-weight:bold;}
+        .RejectedLeave{ color: #CC0001; font-weight:bold;}
+        .OpenLeave{ color: #00f303; font-weight:bold;}
+        .ApprovedLeave{ color: #006300; font-weight:bold;}
+        .RevertdLeave{ color: #9804F0; font-weight:bold;}*/
+</style>
+<div class="uk-width-medium-1-4">
+    <div id="modal_overflow" class="uk-modal">
+        <div class="uk-modal-dialog uk-modal-dialog-medium">
+            <button type="button" class="uk-modal-close uk-close"></button>
+            <div class="uk-overflow-container">
+                <span id="empResponse" class="verflow container"></span>
+            </div>          
+        </div>
+    </div>
+</div>
+<?php $i=0; ?>
+
+
+<div id="page_content" role="main">
+    <div id="page_content_inner">
+       
+<?php echo $flash = $this->Session->flash(); ?>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="clearfix"></div>
+            <div class="md-card">
+<div class="md-card-toolbar">
+                            <div class="md-card-toolbar-actions">
+                                
+                               
+                            </div>
+                            <h3 class="md-card-toolbar-heading-text">
+                               Income Tax Declaration Details
+                            </h3>
+                        </div>
+                <div class="md-card-content">
+                    <!--                    <div class="x_title">
+                                            <h2>Income Tax Declaration Details </h2>
+                    
+                                            <div class="clearfix"></div>
+                                        </div>-->
+
+
+                    <div class="uk-overflow-container uk-margin-bottom">
+
+                        <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair jambo_table bulk_action" id="aats_pager_filter">
+                            <colgroup class="tablesorter-colgroup"><col style="width: auto !important;"></colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Sr.No </th>
+                                    <th>Employee Name </th>
+                                    <th> Financial  Year  </th>
+                                    <th> Location</th>
+                                   <!-- <th>Status</th>-->
+                                    <th> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                  <?php if(empty($incometax)) { ?>
+                               <tr class="even pointer">
+				<td style="text-align:center;" colspan="5">
+				        <em>--No Records Found--</em>
+				</td>
+				</tr>
+              <?php } ?>
+
+             <?php foreach($incometax as $srcdet)  {
+                    if($i%2==0)$class='even pointer'; else $class='odd pointer';?>
+                                <tr>
+                                    <td><?php echo $i+1;//echo $srcdet['MstEmpExpVoucher']['voucher_id'];?></td> 
+                                    <td><?php  echo $this->Common->getempinfo($srcdet['EmpInvest']['emp_code']); ?></td>
+                                    <td><?php echo $this->Common->findfyDesc( $srcdet['EmpInvest']['Fy_id']); ?></td>
+                                    <td>
+                            <?php if($srcdet['EmpInvest']['loc_type'] == 'N'){echo 'Non Metro';}else {echo 'Metro';} ?></td>
+
+                                    <!--<?php if($srcdet['EmpInvest']['invest_status']== 1){?>
+                                     <td><span class="OpenLeave"><?php echo $this->Common->findSatus($srcdet['EmpInvest']['invest_status']);?></span></td>
+                        <?php } elseif($srcdet['EmpInvest']['invest_status']== 2){ ?>
+                                    <td><span class="ForwardLeave"><?php echo $this->Common->findSatus($srcdet['EmpInvest']['invest_status']);?></span></td>
+                        <?php } elseif($srcdet['EmpInvest']['invest_status']== 3) {?>
+                                      <td><span class="RevertdLeave"><?php echo $this->Common->findSatus($srcdet['EmpInvest']['invest_status']);?></span></td>
+                        <?php } elseif($srcdet['EmpInvest']['invest_status']== 4){?>
+                                       <td><span class="RejectedLeave"><?php echo $this->Common->findSatus($srcdet['EmpInvest']['invest_status']);?></span></td>
+                        <?php } elseif($srcdet['EmpInvest']['invest_status']== 5){?> 
+                                       <td><span class="ApprovedLeave"><?php echo $this->Common->findSatus($srcdet['EmpInvest']['invest_status']);?></span></td>
+                        <?php } else{?>  
+                                    <td><span class="PendingLeave"><?php echo $this->Common->findSatus($srcdet['EmpInvest']['invest_status']);?></span></td>
+                        <?php }?> -->    
+
+                                    <td>
+<a data-uk-modal="{target:'#modal_overflow'}" onclick="Get_Details('<?php echo $srcdet['EmpInvest']['id']; ?>')" class="uk-badge uk-badge-success" title="Click to View." >Detailed View</a>
+                        <?php if($srcdet['EmpInvest']['config'] == 1 || $hrapproval['WfMstAppMapLvl']['wf_hr_approval'] == 1){?>    
+                                        <span><a href="<?php echo $this->webroot;?>income_tax/edit/<?php echo base64_encode($srcdet['EmpInvest']['id']);?>/<?php echo base64_encode($srcdet['EmpInvest']['Fy_id']);?>" class="uk-badge uk-badge-success view vtip" title="Click to Edit.">Edit</a></span>
+                        <?php }?>
+                                    </td>
+
+                                </tr>
+             <?php $i++ ;} ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <ul class="uk-pagination uk-pagination-right">
+                            <?php
+                            echo $this->Paginator->prev('Previous', array('tag' => 'li', 'escape' => false), '<a>Previous</a>', array('class' => 'uk-disabled', 'tag' => 'li', 'escape' => false));
+                            echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentLink' => true, 'currentClass' => 'uk-active', 'currentTag' => 'a'));
+                            echo $this->Paginator->next('Next', array('tag' => 'li', 'escape' => false), '<a>Next</a>', array('class' => 'uk-disabled', 'tag' => 'li', 'escape' => false));
+                            ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--                    <div class="navigation navigation-left" >
+            <?php echo $this->Paginator->counter(); ?> Pages
+            <?php echo $this->Paginator->prev('[<< Previous]', null, null, array('class' => 'disabled')); ?>
+            <?php echo $this->Paginator->numbers(); ?>
+            <?php echo $this->Paginator->next('[Next >>]', null, null, array('class' => 'disabled')); ?>
+                                        </div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function Get_Details(id)
+    {
+        jQuery.ajax({
+            url: '<?php echo $this->webroot ?>income_tax/detailView/' + id,
+            success: function (data) {
+//                alert(data);
+                $('#empResponse').html(data);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,22 @@
+/* Float Clearing
+ ---------------------------------------------------------------------*/
+
+.module:after
+{
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+/* float clearing for IE6 */
+
+
+
+
+/* Page Specific
+ ---------------------------------------------------------------------*/
+
+
+

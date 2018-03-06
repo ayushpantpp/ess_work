@@ -1,0 +1,313 @@
+<?php $travelmode = $this->Common->findAllWheelerMode(); ?>
+<!-- Center Content Starts -->
+
+<script>
+    function getconveyence(id)
+    {
+        jQuery.ajax({
+            url: '<?php echo $this->webroot ?>conveyence_expenses/claimmaster/',
+            success: function (data) {
+                //alert(data);
+                jQuery('#empResponse').html(data);
+            }
+        });
+    }
+
+</script>
+<div class="uk-width-medium-1-4">
+    <div id="modal_overflow" class="uk-modal">
+        <div class="uk-modal-dialog uk-modal-dialog-medium">
+            <button type="button" class="uk-modal-close uk-close"></button>            
+            <div class="uk-overflow-container">
+                <span id="empResponse" class="verflow container"></span>
+            </div>          
+        </div>
+    </div>
+</div>
+<div id="page_content" role="main">
+    <div id="page_content_inner">        
+        <h3 class="heading_b uk-margin-bottom">Conveyance expense form</h3>
+        <?php $auth = $this->Session->read('Auth');
+        echo $flash = $this->Session->flash();
+        ?>
+        <div id="alerts"></div>
+        <div class="md-card">
+            <div class="md-card-content large-padding"> 
+                
+                
+
+                <div class="x_panel">
+                    
+                    <div class="x_content">
+                        <?php echo $this->Form->create('ConveyenceExpense', array('url' => array('action' => 'parkedit'), 'id' => 'conveyanceform', 'name' => 'conveyanceform')); ?>
+                        <table class="uk-table uk-table-condensed">                       
+
+                            <tr>
+                                <td>Employee Name :</td>
+                                <td valign="middle"><?php echo ucwords(strtolower($auth['MyProfile']['emp_firstname'])) . " " . ucwords(strtolower($auth['MyProfile']['emp_lastname'])); ?></td>
+                                <td>Voucher Date :</td>
+                                <td><?php echo date('d-m-Y'); ?></td>
+                            </tr>
+                            <tr>
+                                <td>Department :</td>
+                                <?php echo $this->Form->input('voucher_id',array('type'=>'hidden','label'=>false,'value'=>$empconveyencedetail['0']['MstEmpConveyence']['voucher_id'])); ?>
+                                <?php $dept_name = $this->Common->findAllDepartmentName($auth['MyProfile']['comp_code']); ?>
+
+                                <td valign="middle"><?php echo $this->Form->input('Emp_department', array('type' => 'hidden', 'value' => $_SESSION['Auth']['MyProfile']['dept_code'])); ?>
+                                    <?php echo $this->common->getdepartmentbyid($_SESSION['Auth']['MyProfile']['dept_code']); ?>
+                                </td>
+                                <td colspan="2"><a cl class="uk-badge uk-badge-success" data-uk-modal="{target:'#modal_overflow'}" id="dialog_link"  onclick="getconveyence();">Click here to view rates</a>
+
+                                    </th>
+                            </tr>
+                        </table> 
+                        <table class="table table-striped responsive-utilities jambo_table bulk_action" id = "myTable">
+                            <thead>
+                                <tr>  
+                                    <th scope="row">Claim Date</th>
+                                    <th>Travel Mode</th>
+                                    <th width="28%">Description</th>
+                                    <th>Distance (in Kms.)</th>
+                                    <th>Claim-Amt (in &#8377.)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1;
+                                foreach ($empconveyencedetail as $conv) { ?>
+                                    <tr class="even pointer" id="row_1">
+                                        <td><?php echo $this->Form->input('Claimdate.' . $i, array('id' => 'expense_' . $i, 'label' => false, 'type' => 'text', 'class' => 'required expenseTest', 'value' => date('d-m-Y', strtotime($conv['ConveyencExpenseDetail']['claim_date'])), 'MAXLENGTH' => '20', 'autocomplete' => 'off')); ?>
+                                        </td>
+                                        <td><?php echo $this->Form->input('Travel_mode.' . $i, array('id' => 'travel_' . $i, 'type' => 'select', 'label' => false, 'options' => $travelmode, 'value' => $conv['ConveyencExpenseDetail']['mode'], 'class' => 'requiredSelect')); ?></td>
+                                        <td><?php echo $this->Form->textarea('description.' . $i, array('id' => 'description_' . $i, 'rows' => '3', 'class' => 'required', 'MAXLENGTH' => '200', 'autocomplete' => 'off', 'value' => $conv['ConveyencExpenseDetail']['description'])); ?></td>
+                                        <td><?php echo $this->Form->input('distance.' . $i, array('id' => 'distance_' . $i, 'label' => false, 'type' => 'text', 'class' => 'required', 'value' => $conv['ConveyencExpenseDetail']['distance'], 'MAXLENGTH' => '6', 'autocomplete' => 'off')); ?></td>
+                                        <td><?php echo $this->Form->input('claim_amt.' . $i, array('id' => 'claim_amt_' . $i, 'label' => false, 'type' => 'text', 'class' => 'required', 'value' => $conv['ConveyencExpenseDetail']['claim_amount'], 'autocomplete' => 'off', 'onfocus' => 'calculate();', 'onClick' => 'calculate();')); ?></td>
+
+                                    </tr>
+                                    <?php $i = $i + 1; } ?>
+                            </tbody>
+                        </table>     
+                    </div>
+                </div>
+                <br><br>
+                <div class="uk-grid">
+                    <div class="uk-width-1-1">
+                        <input type="submit" class="md-btn md-btn-success" value="Apply" name='post_travel' onclick ="checkSubmit();">
+                        <input type="button" class = 'md-btn md-btn-primary' value="Add New" onClick="return addmore()"/>
+                        <input type="button" class = 'md-btn md-btn-danger' value="Remove" onClick="return removeRow()" id="removeButton"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>    
+<?php $this->Form->end(); ?>   
+<?php foreach ($convenyence_detail as $value) {
+    ?>
+    <input type="hidden" value="<?php echo $value['MstWheelerType']['price']; ?>" id="vc_travel_code-<?php echo $value['MstWheelerType']['name'] ?>"/>
+<?php } ?>
+
+<script>
+    jQuery(document).ready(function () {
+        jQuery("#removeButton").show();
+        jQuery(".expenseTest").datepicker({
+            inline: false,
+            changeMonth: true,
+            autoclose: true,
+            orientation: "right bottom",
+            endDate: 'today',
+            format: 'dd-mm-yyyy'
+
+        });
+
+// You can use the locally-scoped $ in here as an alias to jQuery.
+
+        $('#').change(function () {
+
+        });
+
+    });
+    /*====function to add a row====*/
+
+    function addmore() {
+
+        var oldRowCount = document.getElementById("myTable").rows.length;
+
+        var rowCount = oldRowCount;
+
+        $.ajax({
+            type: "POST",
+            url: "<?php echo $this->webroot ?>conveyence_expenses/addnew/",
+            data: {"rowCount": rowCount},
+            success: function (data_var)
+            {
+                $('#myTable tr:last').after(data_var);
+                $("#myTable").find(".expenseTest").each(function () {
+                    jQuery(this).datepicker({
+                        inline: false,
+                        changeMonth: true,
+                        autoclose: true,
+                        orientation: "right bottom",
+                        endDate: 'today',
+                        format: 'dd-mm-yyyy'
+
+                    });
+                });
+                jQuery("#removeButton").show();
+
+            }
+        });
+    }
+    /*====function to remove a row====*/
+    function removeRow()
+    {
+
+        var id = $('#myTable tr:last').attr('id');
+        var oldRowCount = document.getElementById("myTable").rows.length;
+        var newRowCount = parseInt(oldRowCount) - 1;
+        if (newRowCount == 2)
+        {
+            $("#removeButton").hide();
+            $('#myTable tr:last').remove();
+        }
+        else
+        {
+            $('#myTable tr:last').remove();
+        }
+    }
+    function checkSubmit()
+    {
+
+        var oldRowCount = document.getElementById("myTable").rows.length;
+        var newRowCount = parseInt(oldRowCount) - 1;
+
+        var i;
+        for (i = 1; i <= newRowCount; i++)
+        {
+            var dept_name = jQuery('#department');
+            var description = jQuery('#description_' + i).val();
+            var claim = jQuery('#claim_amt_' + i).val();
+            var distance = jQuery('#distance_' + i).val();
+            var date = jQuery('#expense_' + i);
+            if (dept_name.val() == "")
+            {
+                alert("Please enter department name!");
+                dept_name.focus();
+                return false;
+            }
+            if (date.val() == '')
+            {
+                $("html, body").animate({scrollTop: 0}, "slow");
+                $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>Enter a Date").show();
+                date.focus();
+                return false;
+            } else if (description == "")
+            {
+                $("html, body").animate({scrollTop: 0}, "slow");
+                $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>Description is required to be filled").show();
+
+                return false;
+            } else if (distance == "")
+            {
+                $("html, body").animate({scrollTop: 0}, "slow");
+                $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>Distance is required to be filled").show();
+
+                return false;
+            } else if (isNaN(distance))
+            {
+                $("html, body").animate({scrollTop: 0}, "slow");
+                $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>Enter Numeric Distance Value").show();
+                jQuery('#distance_' + i).focus();
+                return false;
+            }
+            else if (distance <= 0) {
+                $("html, body").animate({scrollTop: 0}, "slow");
+                $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>Enter Valid Distance Value").show();
+                jQuery('#distance_' + i).focus();
+                return false;
+            }
+            else if (claim == "")
+            {
+                $("html, body").animate({scrollTop: 0}, "slow");
+                $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>claim amount is required to be filled").show();
+
+                return false;
+            } else if (isNaN(claim))
+            {
+                $("html, body").animate({scrollTop: 0}, "slow");
+                $("#alerts").html("<div data-uk-alert='' class='uk-alert uk-alert-danger'><a class='uk-alert-close uk-close' href='#'></a>Enter a Numeric Claim Value ").show();
+                jQuery('#claim_amt_' + i).focus();
+
+                return false;
+            }
+
+        }
+
+        return true;
+
+    }
+
+
+
+</script>
+
+<script  type="text/javascript" language="javascript">
+
+    // function to compare dates added by aks
+
+
+    //function to produce runtime calculation of amount added by aks.
+    function calculate()
+    {
+
+        // var oldRowCount = document.getElementById("myTable").rows.length;
+        // var newRowCount = oldRowCount - 1;
+        $('#myTable').find('tr').click(function () {
+            var amnt = '';
+            var newRowCount = $(this).index() + 1;
+
+            var date = jQuery('#expense_' + newRowCount).val();
+
+            var claim_travel_mode = jQuery('#travel_' + newRowCount).val();
+
+            var distance = jQuery('#distance_' + newRowCount).val();
+
+
+            if (date !== "" & claim_travel_mode !== "")
+            {
+                if (claim_travel_mode === '6')
+                {
+                    amnt = distance * $('#vc_travel_code-6').val();
+                } else if (claim_travel_mode === '7')
+                {
+                    amnt = distance * $('#vc_travel_code-7').val();
+                } else if (claim_travel_mode === '8')
+                {
+                    amnt = distance * $('#vc_travel_code-8').val();
+                } else if (claim_travel_mode === '9')
+                {
+                    amnt = distance * $('#vc_travel_code-9').val();
+                }
+
+
+            }
+            $('#claim_amt_' + newRowCount).val(amnt);
+        });
+    }//end function.
+
+</script>
+
+
+<style type="text/css">
+    .required{
+        width:182px;
+        height:19px;
+        padding:5px;
+    }
+    .requiredSelect{
+        width:182px;
+        height:32px;
+        padding:5px;
+    }
+</style>

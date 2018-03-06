@@ -1,0 +1,39 @@
+ALTER TABLE `appraisal_development_plan` ADD `app_review_status` int(11) NOT NULL;
+ALTER TABLE `appraisal_development_plan` ADD `emp_review_status` int(11) NOT NULL;
+ALTER TABLE `appraisal_development_plan` ADD `mod_remarks` varchar(1000) NOT NULL;
+ALTER TABLE `appraisal_development_plan` ADD `mod_review_status` int(11) NOT NULL;
+ALTER TABLE `appraisal_development_plan` MODIFY `moderator_code` int(100) DEFAULT NULL;
+ALTER TABLE `appraisal_development_plan` ADD `rev_review_status` int(11) NOT NULL;
+ALTER TABLE `appraisal_development_plan` MODIFY `reviewer_code` int(100) DEFAULT NULL;
+ALTER TABLE `appraisal_process` ADD `app_review_status` int(11) NOT NULL;
+ALTER TABLE `appraisal_process` ADD `emp_review_status` int(11) NOT NULL;
+ALTER TABLE `appraisal_process` ADD `mod_review_status` int(11) NOT NULL;
+ALTER TABLE `appraisal_process` ADD `rev_review_status` int(11) NOT NULL;
+CREATE TABLE IF NOT EXISTS `competency_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `financial_year` varchar(50) NOT NULL,
+  `emp_code` varchar(255) NOT NULL,
+  `app_mid_status` int(11) DEFAULT NULL COMMENT '0=incomplete,1=complete',
+  `rev_mid_status` int(11) DEFAULT NULL COMMENT '0=incomplete,1=complete',
+  `mod_mid_status` int(11) DEFAULT NULL COMMENT '0=incomplete,1=complete',
+  `app_ann_status` int(11) DEFAULT NULL COMMENT '0=incomplete,1=complete',
+  `rev_ann_status` int(11) DEFAULT NULL COMMENT '0=incomplete,1=complete',
+  `mod_ann_status` int(11) DEFAULT NULL COMMENT '0=incomplete,1=complete',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+ALTER TABLE `competency_target` MODIFY `appraiser_rating` float(3,2) DEFAULT NULL;
+ALTER TABLE `competency_target` MODIFY `moderator_rating` float(3,2) DEFAULT NULL;
+ALTER TABLE `competency_target` MODIFY `reviewer_rating` float(3,2) DEFAULT NULL;
+CREATE TABLE IF NOT EXISTS `kra_approval_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `financial_year` varchar(50) NOT NULL,
+  `emp_code` varchar(50) NOT NULL,
+  `emp_status` int(11) NOT NULL,
+  `app_status` int(11) NOT NULL,
+  `rev_status` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+ALTER TABLE `mst_pms_config` ADD `mid_review` int(11) NOT NULL;
+ALTER TABLE `training_development` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `appraisal_development_plan` ADD `app_remark` VARCHAR(1000) NOT NULL AFTER `emp_review_status`, ADD `rev_remark` VARCHAR(1000) NOT NULL AFTER `app_remark`;
+UPDATE `stl_live`.`mst_pms_config` SET `mid_review` = '1' WHERE `mst_pms_config`.`id` = 1;

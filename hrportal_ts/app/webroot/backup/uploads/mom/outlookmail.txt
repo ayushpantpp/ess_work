@@ -1,0 +1,238 @@
+http://www.w3schools.com/php/php_ajax_database.asp ------------------------ php ajex get info on click from database------
+
+------------------------------------ http://codecanyon.net/item/tasked-php-task-management/9372768 ---------------
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  } 
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","getuser.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<form>
+<select name="users" onchange="showUser(this.value)">
+<option value="">Select a person:</option>
+<option value="1">Peter Griffin</option>
+<option value="2">Lois Griffin</option>
+<option value="3">Joseph Swanson</option>
+<option value="4">Glenn Quagmire</option>
+</select>
+</form>
+<br>
+<div id="txtHint"><b>Person info will be listed here.</b></div>
+
+</body>
+</html>
+
+http://phppot.com/jquery/jquery-dependent-dropdown-list-countries-and-states/
+http://phppot.com/demo/jquery-dependent-dropdown-list-countries-and-states/
+
+
+
+http://www.sourcecodester.com/tutorials/php/5568/creating-dependent-dropdown-list-php-jquery-and-ajax.html
+  
+--------------------------------------------------------
+<?php
+https://apps.dev.microsoft.com/#/application/64271a0c-2d2c-4c91-a467-0efe931ea24c
+
+outlookcl Registration
+
+Name- outlookcl
+Application Id - 64271a0c-2d2c-4c91-a467-0efe931ea24c
+pass - Krjm1MMjzbwB3d3bkw3nw0K
+
+
+// https://dev.outlook.com/RestGettingStarted/Tutorial/php
+
+//--main---- http://blogs.msdn.com/b/exchangedev/archive/2015/02/26/using-the-calendar-api-in-php.aspx
+
+//https://daveismyname.com/adding-events-to-microsoft-outlook-from-php-using-ical-bp
+
+// http://stackoverflow.com/questions/12776088/how-to-create-an-outlook-calendar-meeting-request-in-php
+
+// Example Site: http://r2d2.cc/2014/01/27/create-outlook-meeting-request-php/
+?>
+
+------------------------------------
+for office365
+email- ankit@super413.onmicrosoft.com
+pass- a@22091986
+app name- outlook-cl
+Application Id- e947ae84-dfb9-4711-bdd4-fa937ab20b70
+Application Secrets- a9m1E7pSrxGHd7vaqpCVdPG
+------------------------------------
+outlook oauth api=== Query
+
+https://msdn.microsoft.com/en-IN/library/dn440163.aspx
+
+-----------------------------------------------------------
+oauth20_authorize.srf=== Query
+https://account.live.com/developers/applications/basicinfo/000000004417CB4F?n=1
+
+https://msdn.microsoft.com/en-us/library/office/dn659750.aspx
+
+https://account.live.com/developers/applications
+
+outlook-cl-php
+
+Client ID:
+000000004417CB4F
+
+Client secret (v1):
+otyg3lkSH8UI5ngnQwzSdRz2Wmt7aDFO
+
+https://account.live.com/developers/applications/apisettings/000000004417cb4f --------- register your app on microsoft
+
+------------------------------------------------------------
+
+https://apps.dev.microsoft.com/#/application/2f5b17ec-a0a0-4a84-aa44-958890b19941
+31 march---->
+
+Application Id
+2f5b17ec-a0a0-4a84-aa44-958890b19941
+
+Client secret (v1):
+am4UowGqVQdtq0JU7AqGMbH
+
+
+---------------------https://dev.outlook.com/AppRegistration----------------imp same as folder image
+
+then come------->>>>>> for web app only
+Application Id
+cba394ee-1178-4a31-ade2-1d3a9e6ca940
+
+Client secret
+UiRN7/Ed5TPEDjQi3PIwJnIjU9G8YYb63K90QwTDaIw=
+-----------------------------------------------
+Increase Size of import File in phpmyadmin
+
+php.ini file
+
+Find:
+post_max_size = 8M
+upload_max_filesize = 2M
+max_execution_time = 30
+max_input_time = 60
+memory_limit = 8M
+
+Change to:
+post_max_size = 750M
+upload_max_filesize = 750M
+max_execution_time = 5000
+max_input_time = 5000
+memory_limit = 1000M
+
+
+About Json:-
+http://www.tutorialspoint.com/json/json_php_example.htm
+
+About fa icon:-
+http://bootstrapmaster.com/live/one/icons_set2.html
+http://getbootstrap.com/components/
+http://fortawesome.github.io/Font-Awesome/icon/list-alt/
+
+
+
+http://blogs.msdn.com/b/exchangedev/archive/2014/03/25/using-oauth2-to-access-calendar-contact-and-mail-api-in-exchange-online-in-office-365.aspx
+---------------------------------------------------------------------------------------
+other url for help
+https://msdn.microsoft.com/en-us/office/office365/api/mail-rest-operations
+https://msdn.microsoft.com/office/office365/APi/use-outlook-rest-api#DefineOutlookRESTAPI
+----------------------------------------------------------------------------------------
+Project Managment:-
+http://www.tutorialspoint.com/management_concepts/project_management_tools.htm
+----------------------------------------------------------------------------------------
+
+Task Managment:-
+http://projects.students3k.com/php-online-task-management-system-source-code-download.html
+
+------------------------------------------------------------------------------------------
+
+
+
+function getemployee(val)
+{
+var region=document.getElementById("Expense_VoucherRegion").value;
+if(val=="emp") {
+var url='<?php echo $this->webroot; ?>Expense/getempname'+'/'+region+'/'+<?php echo $empdetail[0]; ?>;
+jQuery.get(url,{}, function(data){
+jQuery("#allemp").empty().html(data);
+});
+}}
+</script>
+
+<html>
+<th scope="row">Select Region :</th>
+<td> <input type = 'select' 'options' => $Region, 'onChange' => "getemployee('emp')")); ?></td>
+</tr><tr>
+
+
+</html> 
+
+
+
+
+31 march---->
+after run calendar page then page redirect on below URL
+
+https://login.live.com/oauth20_authorize.srf?client_id=64271a0c-2d2c-4c91-a467-0efe931ea24c&redirect_uri=http%3A%2F%2Flocalhost%2Fphp-tutorial-master%2Fauthorize.php&response_type=code&scope=openid+https%3A%2F%2Foutlook.office.com%2Fcalendars.read&login_hint=ankitkhosa%40outlook.com&ui_locales=en-GB&display=page&uaid=4e42016d04a440599cde4afc5d70dbe3&issuer=mso&msproxy=1
+
+other app--->
+
+https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=2f5b17ec-a0a0-4a84-aa44-958890b19941&redirect_uri=http%3A%2F%2Flocalhost%2Fphp-tutorial%2Fauthorize.php&response_type=code&scope=openid+https%3A%2F%2Foutlook.office.com%2Fmail.read+https%3A%2F%2Foutlook.office.com%2Fcalendars.read+https%3A%2F%2Foutlook.office.com%2Fcontacts.read
+
+
+https://login.live.com/oauth20_authorize.srf?client_id=2f5b17ec-a0a0-4a84-aa44-958890b19941&redirect_uri=http%3A%2F%2Flocalhost%2Fphp-tutorial%2Fauthorize.php&response_type=code&scope=openid+https%3A%2F%2Foutlook.office.com%2Fmail.read+https%3A%2F%2Foutlook.office.com%2Fcalendars.read+https%3A%2F%2Foutlook.office.com%2Fcontacts.read&login_hint=ankitkhosa%40outlook.com&ui_locales=en-GB&display=page&uaid=dbdcd45c5989428e9ee5c964123c3fbe&issuer=mso&msproxy=1
+
+
+oulook orignal url below-->
+
+https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1459406118&rver=6.4.6456.0&wp=MBI_SSL_SHARED&wreply=https:%2F%2Fmail.live.com%2Fdefault.aspx&lc=2057&id=64855&mkt=en-gb&cbcxt=mai
+
+after login---->
+https://login.live.com/ppsecure/post.srf?wa=wsignin1.0&rpsnv=12&ct=1459406118&rver=6.4.6456.0&wp=MBI_SSL_SHARED&wreply=https:%2F%2Fmail.live.com%2Fdefault.aspx&lc=2057&id=64855&mkt=en-gb&cbcxt=mai&bk=1459406120&uaid=dd598e072a2242b19d0f27156f2d3cfa&pid=0
+
+
+
+error----->
+
+https://login.live.com/err.srf?lc=2057#error=invalid_request&error_description=The+provided+value+for+the+input+parameter+'redirect_uri'+is+not+valid.+The+expected+value+is+'https://login.live.com/oauth20_desktop.srf'+or+a+URL+which+matches+the+redirect+URI+registered+for+this+client+application.
+
+
+http://www.9lessons.info/2013/01/login-with-microsoft-live-oauth-connect.html
+
+
+https://account.live.com/developers/applications --->>>>>>>>>--- portal Register here
+---> show url for help--- http://stackoverflow.com/questions/16169570/microsoft-live-connect-rest-access-issue
+
+
+
+https://login.live.com/oauth20_authorize.srf?client_id=00000000400EA58C&scope=wl.basic+wl.emails+wl.birthday&response_type=code&redirect_uri=http%3A%2F%2Fdemos.9lessons.info%2Fmicrosoft%2Fmicrosoft_login.php&state=1459488737-f2e170
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+
+
+CREATE TABLE IF NOT EXISTS `paginator` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `appid` int(11) NOT NULL,
+  `paginate_lvl` int(11) NOT NULL,
+  `created_date` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `paginator`
+--
+
+INSERT INTO `paginator` (`id`, `appid`, `paginate_lvl`, `created_date`) VALUES
+(1, 21, 20, '0000-00-00 00:00:00'),
+(2, 2, 20, '2017-12-14 11:04:44'),
+(3, 3, 20, '2017-12-14 11:10:08'),
+(4, 1, 20, '2017-12-15 06:10:20'),
+(5, 20, 20, '2017-12-15 07:38:30'),
+(6, 16, 20, '2017-12-15 09:22:20'),
+(7, 8, 20, '2017-12-15 09:29:22'),
+(8, 14, 2, '2017-12-15 09:35:13'),
+(9, 20, 2, '2017-12-15 09:52:08'),
+(10, 19, 20, '2017-12-15 09:52:31');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+ALTER TABLE `attendance_details` ADD `modify_date` TIMESTAMP NOT NULL AFTER `address`;
+ALTER TABLE `wf_mst_app_map_lvl` CHANGE `wf_id` `wf_id` INT(11) NOT NULL AUTO_INCREMEN
+INSERT INTO `live_db`.`wf_mst_app_map_lvl` (`wf_id`, `wf_app_id`, `wf_max_lvl`, `wf_dept_id`, `created_date`, `comp_code`, `wf_hr_approval`, `review_degree`, `rv_dgr`, `solc_id`, `cld_id`, `ho_org_id`, `org_id`, `emp_doc_id`, `doc_id`, `manager_approval`, `hr_approval`, `sepc_approval`) VALUES (NULL, '21', '2', 'DEPT00006', '2017-09-26', '01', '0', NULL, '0', NULL, NULL, NULL, '01', NULL, NULL, '0', NULL, NULL);
+ALTER TABLE `attendance_details` CHANGE `attendence_approve_level` `hr_approval_status` INT(11) NOT NULL;
+ALTER TABLE `attendance_details` ADD `hr_code` VARCHAR(122) NOT NULL AFTER `hr_approval_status`;
+
+
+//New Changes
+ALTER TABLE `attendance_wf` CHANGE `emp_doc_id` `emp_doc_id` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+

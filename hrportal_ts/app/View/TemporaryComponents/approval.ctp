@@ -1,0 +1,174 @@
+<?php ?><div class="uk-width-medium-1-4">
+    <div id="modal_overflow" class="uk-modal">
+        <div class="uk-modal-dialog uk-modal-dialog-medium">
+            <button type="button" class="uk-modal-close uk-close"></button>
+            <div class="uk-overflow-container">
+                <span id="tmpApp" class="verflow container"></span>
+            </div>          
+        </div>
+    </div>
+</div>
+<?php $i=0; ?>
+<div id="page_content">
+    <div id="page_content_inner">
+        <h3 class="heading_b uk-margin-bottom">Temporary Component Approval</h3>
+        <?php echo $flash = $this->Session->flash(); ?>
+        </div>
+        <div class="md-card">
+            <div class="md-card-content">
+                <div class="uk-overflow-container uk-margin-bottom">
+
+<?php echo $this->Form->create('lta', array('url' => array('controller' => 'lta', 'action' => 'rejectvoucher'), 'id' => 'trvoucher','name'=>'trvoucher')); ?>
+<table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair">
+  <thead>
+    <tr class="headings">
+      
+           <th>Sr. No</th>
+           <th>Name</th>          
+           <th>Applied Date</th>
+           <th>Status</th>
+           <th>Details</th>
+      
+     </tr>
+  </thead>
+  <tbody>
+      
+       <?php if(count($pending_temp_employee)==0) { ?>
+    <tr class="even pointer">
+		<td style="text-align:center;" colspan="11">
+			<em>--No Records Found--</em>
+		</td>
+    </tr>
+  <?php } ?>
+      
+        <?php $i=1;
+            foreach($pending_temp_employee as $pending_detail)
+             { ?>
+     <tr <?php if($i%2==0){?>class="even-pointer" <?php } else {?>class="odd-pointer" <?php } ?>>
+	
+ 		    <td><?php echo $i;?></td>
+                    <td>
+                        <?php $empname =$this->Common->getempinfo($pending_detail['EmployeeSalMon']['emp_code']);
+                        echo $empname ;?>
+                    </td>
+                    <td>
+                        <?php echo date('d-m-Y',strtotime( $pending_detail['EmployeeSalMon']['created_at']));?>
+                    </td>
+                   
+                    <td>
+                    <?php $x=0; //echo $pending_detail['ConveyencExpenseDetail']['leave_status'];
+			//echo $pending_detail['LeaveWorkflow']['fw_date'];echo ','.$pending_detail['ConveyencExpenseDetail']['leave_status'].'<br/>';
+			if($pending_detail['temp']['temp_status']=='4')
+			{					
+				echo strtoupper($this->Common->findSatus(4));
+			}
+			else if($pending_detail['temp']['fw_date']!=null && $pending_detail['temp']['temp_status']=='6')
+			{
+				echo $this->Common->findSatus(6);
+			}
+			else if($pending_detail['temp']['temp_status']=='5')
+			{
+				echo strtoupper($this->Common->findSatus(5));
+			}
+			else if($pending_detail['temp']['fw_date']==null && $pending_detail['temp']['temp_status']=='3')
+			{
+				echo strtoupper($this->Common->findSatus(3));
+			}
+			else if($pending_detail['temp']['fw_date']!=null && $pending_detail['temp']['temp_status']=='2')
+			{
+                            
+				echo strtoupper($this->Common->findSatus(2));
+			}
+                        
+			else if($pending_detail['temp']['fw_date'] ==null && $pending_detail['temp']['temp_status']!='5'){ 
+			?>
+                         <a class="btn btn-primary btn-xs" href="<?php echo $this->webroot.'temporary_components/fwtemp/'.base64_encode($pending_detail['EmployeeSalMon']['id']);?>" Title="Approve/Reject">Approve/Reject</a>
+                         
+                            
+                           <!-- <a href="#" id="dialog_link" class="icon-thumbs-down"onclick="return reject('<?php echo $pending_detail['mst']['comp_code']?>','<?php echo $pending_detail['DtTravelVoucher']['voucher_id']?>','<?php echo $pending_detail['DtTravelVoucher']['tour_start_date'];?>','<?php echo $pending_detail['DtTravelVoucher']['tour_end_date'];?>')" title="Reject" >
+                               
+                           </a> -->
+                       
+                  
+                   <?php  }?>
+                            
+                   </td>
+                   <td><a data-uk-modal="{target:'#modal_overflow'}" href="#popup1" onclick="Get_Details('<?php echo $pending_detail['EmployeeSalMon']['id']; ?>')" title="Click to View.">View Details</a> </td>
+                </tr>
+    <?php $i++ ; $x++;}  ?></tbody>
+</table>
+<input type="hidden" id="vouchno" name="voucher_no" value=""/>
+<input type="hidden" id="ccode" name="comp_code" value=""/>
+<input type="hidden" id="stdate" name="start_date" value=""/>
+<input type="hidden" id="eddate" name="end_date" value=""/>
+<input type="hidden" id="rejectres" name="rejectreson" value=""/>
+     
+ </div>
+</div>
+<div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-medium-1-1">
+                        <ul class="uk-pagination uk-pagination-right">
+<?php
+echo $this->Paginator->prev('Previous', array('tag' => 'li', 'escape' => false), '<a>Previous</a>', array('class' => 'uk-disabled', 'tag' => 'li', 'escape' => false));
+echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentLink' => true, 'currentClass' => 'uk-active', 'currentTag' => 'a'));
+echo $this->Paginator->next('Next', array('tag' => 'li', 'escape' => false), '<a>Next</a>', array('class' => 'uk-disabled', 'tag' => 'li', 'escape' => false));
+?>
+                        </ul>
+                    </div>
+
+                </div>
+
+</div>
+
+
+  </div>
+  </div>
+ </div>
+<div id="dialog" title="Remark/Comment" style="display:none">
+
+        <textarea  name="reject_reson" id="cmnt" border='0' col="100" row="100" style="width: 600px; height:200px;" onKeypress="getcmtval()" > </textarea>
+        <div class="ui-widget" id="errdis" style="display:none">
+            <div class="ui-state-error ui-corner-all" style="margin-top: px; padding: 0pt 9em; margin-left: 0px;">
+            <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+            <strong></strong> Please write rejection reason.</p>
+            </div>
+        </div>
+
+</div>
+
+<?php $this->Form->end(); ?>
+
+<script type="text/javascript">
+function Get_Details(id)
+{   
+    jQuery.ajax({
+        url: '<?php echo $this->webroot ?>TemporaryComponents/approval_detail_view/'+id,
+        success: function(data){
+      //alert(data);
+            jQuery('#tmpApp').html(data);
+        }
+    });
+ }   
+</script>
+<style>
+    #dialog textarea{background-color:#ffffff; border: none !important; margin-top: -43px;}    
+    span#ui-id-2{ background-color:#E0ECF8; font-size:14px; font-weight:bold; width: 100%; padding: 10px; float:left;}
+    button.ui-button{ float:right; position: relative; background-color: #00a65a !important;
+    border-color: #008d4c!important; border-radius: 3px;
+    box-shadow: none;  color: #fff; -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap; margin-right: 10px;}
+
+</style>
+

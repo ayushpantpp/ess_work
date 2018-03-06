@@ -1,0 +1,38 @@
+create table newdata_log_req
+(
+  tab_name   varchar(100),
+  col_name   varchar(2000),
+  col_data   varchar(2000),
+  operation  varchar(40),
+  id         int(10),
+  err_code   int(20),
+  err_dtl    varchar(1000),
+  err_date   date
+)
+
+
+
+create table newdata_log_req
+(
+  tab_name   varchar(100),
+  col_name   varchar(2000),
+  col_data   varchar(2000),
+  operation  varchar(40),
+  id         int(10)
+)
+
+
+CREATE TABLE IF NOT EXISTS `newdata_req` (
+  `id` int(3) NOT NULL,
+  `table_name` varchar(50) NOT NULL,
+  `operation` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `data_transfer_sync_req` (
+  `task_name` varchar(20) NOT NULL,
+  `task_status` int(1) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `last_exec` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;

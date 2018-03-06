@@ -1,0 +1,13 @@
+1.from the dashboard when we go to clicks on the customer it displaywed only 5 customer even when in the people it is displayed approx 15.
+
+2.PO which is generated for the godown is also displayed at the EXB.
+
+3.without openning the register we can navigatye to the dashboard
+
+4.multiple cheques are accepted if we dont enter any cheque no.
+5. sometimes system hanged
+
+
+
+
+

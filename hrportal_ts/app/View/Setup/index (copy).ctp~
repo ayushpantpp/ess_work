@@ -1,0 +1,19 @@
+<div id="page_content">
+<p>Welcome To eBizframe 10 ESS Portal Installation</p>
+<table width="100%" border="0" cellspacing="1" cellpadding="5" class="exp-voucher">
+   <tr>
+     <td colspan="4"><b>Select Country To be installed</b></td> 
+   </tr>
+   <tr class="cont">
+        <td>Country List</td>
+        <td><label for="mom_id">Select Organization: <span class="req">*</span></label>
+                                <?php echo $this->form->input('comp_code', array('label'=>false, 'type' => 'select',
+                                'options' => array('' => 'Select Organization',$company_list),
+                                'value' => '','class' => "data-md-selectize",'required'=>true,'id'=>'mom_id')); ?><td> 
+	<td>
+            <button type="button" id="import_data" class="successButton" onclick="return check_connection()">Check</button>
+        </td>
+        <td id="result_db_check"></td>
+    </tr> 
+</table>
+</div>

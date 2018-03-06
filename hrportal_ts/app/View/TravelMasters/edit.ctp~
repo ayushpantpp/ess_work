@@ -1,0 +1,57 @@
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Update Travel-Master</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row" >
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content"> <br />
+                        <?php echo $this->Form->create('TravelMaster');   ?>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <label for="department-id" class="control-label col-md-4 col-sm-4 col-xs-12">Department Id<span class="required">*</span></label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <?php echo $this->Form->input('department_id', array('label'=>false,'class'=>'form-control col-md-7 col-xs-12','type' => 'text','required','readonly'=>'readonly'));?>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Designation Id<span class="required">*</span></label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <?php echo $this->Form->input('designation_id', array('label'=>false,'class'=>'form-control col-md-7 col-xs-12','type' => 'text','required','readonly'=>'readonly')); ?>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <label for="middle-name" class="control-label col-md-4 col-sm-4 col-xs-12">Amount<span class="required">*</span></label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <?php echo $this->Form->input('amount', array('label'=>false,'class'=>'form-control col-md-7 col-xs-12','required')); ?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2 ">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        <?php echo $this->Form->end(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#TravelMasterAmount").keydown(function (e) {
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    return;
+                }
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+    });
+</script>

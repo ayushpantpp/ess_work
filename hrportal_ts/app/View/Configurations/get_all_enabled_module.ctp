@@ -1,0 +1,112 @@
+<?php
+$auth = $this->Session->read('Auth');
+//$auth['User']['comp_code'];
+
+?>
+<table width="100%" border="0" cellspacing="1" cellpadding="5" class="exp-voucher">
+    <tr >
+
+
+    </tr>
+    <tr class="head">
+     <!-- <th width="3%"><input type="checkbox" id="ch"></th> -->
+        <th width="7%">S. No.</th>
+        <th width="25%"><?php echo $this->Paginator->sort('name', 'Module Name'); ?></th> 
+        
+        <th width="30%">Rights</th>
+        <input type="hidden" value="<?= $id; ?>"  class="user_id">
+
+    </tr>
+   <?php if($uc_action == 'usercontrol'){?>
+    <tr>
+        <td>1</td>
+        <td>Activate / Deactivate Users</td>
+        <td>
+            
+            <input id="toggle_status" type="checkbox" <?php echo $user_portal_status? 'checked' : ''?>>
+        </td>
+
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Reset password</td>
+        <td>
+            <input type="button" value="Reset now" class="reset_password">
+        </td>
+
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Change password</td>
+        <td>
+            <input type="password" placeholder="Change passsword" id="cp_value">
+            <input type="button" value="Submit" id="change_password">
+        </td>
+
+    </tr>
+    <?php   
+    }else{
+        
+    $i = 1; ?>
+    <?php if (empty($enabled_modules)) { ?>
+        <tr class="cont">
+            <td style="text-align:center;" colspan="6">
+                <em>--No Records Found--</em>
+            </td>
+        </tr>
+    <?php } ?>
+    <?php
+//pr($this->params);
+echo $this->Form->input("", array("type" => "hidden","class" => "emp_code","name" => "emp_code", "id" => "emp_code","value" => "".$emp_code.""));
+
+echo $this->Form->input("", array("type" => "hidden","class" => "comp_code","name" => "comp_code", "id" => "comp_code","value" => "".$comp_code.""));
+
+    foreach ($enabled_modules as $res) {
+        if ($i % 2 == 0) {
+            $class = 'cont';
+        } else {
+            $class = 'cont1';
+        }
+        ?>
+        <!-- View -->
+        <tr class="<?php echo $class; ?>" id="vw<?php echo $res['AdminOption']['id']; ?>">
+            <td >
+		<?php echo $i; ?>
+            </td>
+            <td>
+                <span id="empn<?php echo $res['AdminOption']['id']; ?>" style="width:300px; word-wrap:break-word;">
+                    <?php echo $res['AdminOption']['description']; 
+			echo $this->Form->input("",array("type" => "hidden","class" => "mod_id","name" => "module_id[]", "id" => "mod_id","value" => "".$res['AdminOption']['id'].""));
+?> </span>
+            </td>
+          
+	   
+            <td>
+		<?php
+$option = $this->Common->getAllAclRights();
+
+$mst_acl = new Model(array('table' => 'mst_acl', 'ds' => 'default', 'name' => 'MST_ACL'));
+$assinged_acls = $mst_acl->find('list',array('fields'=>array('acl_rights_id'),'conditions'=>array('admin_options_id'=>$res['AdminOption']['id'],'emp_code'=>$emp_code)));
+
+echo $this->Form->input("", array("type" => "select","name" => "rights_type_".$res['AdminOption']['id']."", "multiple" => "multiple", "options" => $option, 'selected' => $assinged_acls, "class" => "round_select rights_type", "id" => "rights_type".$res['AdminOption']['id']."")); ?>
+                                 
+                </td> 
+
+
+        </tr>
+        <!-- End View -->
+
+
+        <!-- End Edit --> 
+        <?php $i++;
+    }
+        }
+
+    ?>
+
+
+
+
+
+</table>
+

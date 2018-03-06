@@ -1,0 +1,13 @@
+<?php
+
+App::uses('AppModel', 'Model');
+
+class EmpDocuments extends AppModel {
+	Configure::write('debug',2);die;
+
+    public $useDbConfig = 'default';
+    public $name = 'EmpDocuments';
+    public $useTable = 'emp_documents';
+    public $primaryKey = 'id';
+
+}

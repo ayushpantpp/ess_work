@@ -1,0 +1,70 @@
+<table width="100%" border="0" cellspacing="1" cellpadding="5" class="exp-voucher">
+    <tr >
+
+
+    </tr>
+    <tr class="head">
+     <!-- <th width="3%"><input type="checkbox" id="ch"></th> -->
+        <th width="7%">S. No.</th>
+        <th width="25%"><?php echo $this->Paginator->sort('name', 'Module Name'); ?></th> 
+        <th width="15%">Status</th>
+        <th width="30%">Assign</th>
+
+
+    </tr>
+    <?php $i = 1; ?>
+    <?php if (empty($enabled_modules)) { ?>
+        <tr class="cont">
+            <td style="text-align:center;" colspan="6">
+                <em>--No Records Found--</em>
+            </td>
+        </tr>
+    <?php } ?>
+    <?php
+//pr($this->params);
+    foreach ($enabled_modules as $res) {
+        if ($i % 2 == 0) {
+            $class = 'cont';
+        } else {
+            $class = 'cont1';
+        }
+        ?>
+        <!-- View -->
+        <tr class="<?php echo $class; ?>" id="vw<?php echo $res['MyProfile']['id']; ?>">
+            <td >
+            </td>
+            <td>
+                <span id="empn<?php echo $res['MyProfile']['emp_code']; ?>" style="width:300px; word-wrap:break-word;">
+                    <?php echo $res['MyProfile']['emp_full_name']; ?> </span>
+            </td>
+            <td>
+                <span  style="width:300px; word-wrap:break-word;">
+                    <?php echo $res['MyProfile']['emp_code']; ?></span>
+            </td>
+	    <td>
+                <span  style="width:300px; word-wrap:break-word;">
+                    <?php echo $this->Common->getdepartmentbyid($res['MyProfile']['dept_code']); ?></span>
+            </td>
+            <td>
+                <span id="empn<?php //echo $res['ADMIN_ORG']['status'];  ?>" class="option_values" style="width:300px; word-wrap:break-word;">
+                    <a href="#" mid="<?php echo $res['MyProfile']['emp_code']; ?>" id="dialog_link" onclick="modal(<?php echo $res['MyProfile']['emp_code']; ?>);" value="<?php echo $res['MyProfile']['emp_code']; ?>">Assign</a> 
+
+                    
+                </span></td> 
+
+
+        </tr>
+        <!-- End View -->
+
+
+        <!-- End Edit --> 
+        <?php $i++;
+    }
+    ?>
+
+
+
+
+
+</table>
+

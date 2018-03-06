@@ -1,0 +1,135 @@
+<style>
+
+    .ForwardLeave{  color: #329ACF; font-weight:bold;}
+    .PendingLeave{ color: #DF8040; font-weight:bold;}
+    .RejectedLeave{ color: #CC0001; font-weight:bold;}
+    .OpenLeave{ color: #00f303; font-weight:bold;}
+    .ApprovedLeave{ color: #006300; font-weight:bold;}
+    .RevertdLeave{ color: #9804F0; font-weight:bold;}
+</style>
+
+<?php $i=0; ?>
+<div id="page_content">
+    <div id="page_content_inner">
+        <h3 class="heading_b uk-margin-bottom">Pending Addresses</h3>
+        <div class="md-card">
+            <div class="md-card-content">
+                <div class="uk-overflow-container uk-margin-bottom">
+            
+      <?php 
+          echo $this->Form->create('addressApproval', array('inputDefaults' => array(
+        'label' => false, 'div' => false, 'error' => array('wrap' => 'span', 'class' => 'my-error-class')),
+        'url' => array('controller' => 'Users', 'action' => 'addressSaveInfo'), 'id' => 'addressApproval', 'name' => 'addressApproval'));
+      //echo'<pre>';pr($getlvl);?>
+
+    
+
+            <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair" id="ts_pager_filter">
+              <thead>
+                <tr class="headings">
+
+                  <th class="column-title">Sr.No </th>
+                  <th class="column-title">Employee Name </th>
+                  <th class="column-title"> Applied Date  </th>
+                  <th class="column-title">Current Address </th>
+                  <th class="column-title">Current City </th>
+                  <th class="column-title">Current State </th>
+                  <th class="column-title">Current Country </th>
+                  <th class="column-title">Current Pincode </th>
+                  <th class="column-title">Permanent Address </th>
+                  <th class="column-title">Permanent City </th>
+                  <th class="column-title">Permanent State </th>
+                  <th class="column-title">Permanent Country </th>
+                  <th class="column-title">Permanent Pincode </th>
+                  <th class="column-title">Document Proof </th>
+                 </tr>
+              </thead>
+              <tbody>
+
+                  <?php  if(empty($address_info)) { ?>
+                <tr class="even pointer">
+                <td style="text-align:center;" colspan="11">
+                        <em>--No Records Found--</em>
+                </td>
+                </tr>
+              <?php } ?>
+
+             <?php  foreach($address_info as $srcdet)  {
+                    if($i%2==0)$class='even pointer'; else $class='odd pointer';?>
+               <tr class="even pointer">
+                            <td><?php echo $i+1;//echo $srcdet['MstEmpExpVoucher']['voucher_id'];?></td> 
+                            <td><?php  echo $this->Common->getempinfo($srcdet['emp_code']); ?></td>
+                            <td><?php echo $srcdet['created_at']; ?></td>
+                            <td><?php echo $srcdet['cur_address']; ?></td>
+                            <td><?php echo $srcdet['cur_city']; ?></td>
+                            <td><?php echo $srcdet['cur_state']; ?></td>
+                            <td><?php echo $srcdet['cur_country']; ?></td>
+                            <td><?php echo $srcdet['cur_pincode']; ?></td>
+                            <td><?php echo $srcdet['per_address']; ?></td>
+                            <td><?php echo $srcdet['per_city']; ?></td>
+                            <td><?php echo $srcdet['per_state']; ?></td>
+                            <td><?php echo $srcdet['per_country']; ?></td>
+                            <td><?php echo $srcdet['per_pincode']; ?></td>
+                            <td><a href="<?php echo $this->webroot.'uploads/document/'.$srcdet['document'];?>" target="_blank"><?php echo $srcdet['document']?></a></td>   
+              </tr>
+             <?php $i++ ;} ?>
+            </tbody>
+            </table>
+         <input type="radio" id="approve" name="data[AddressWorkflow][type]" value="5" class="flat" onclick="displaytype();"> <strong>Approve</strong>
+         <input type="radio" id="reject" name="data[AddressWorkflow][type]" value="4" class ="flat" onclick="displaytype();"><strong> Reject </strong>
+         <input type="hidden" name ="addressid" value='<?php echo $addressid;  ?>' >
+         <input type="hidden" name ="emp_code" value='<?php echo $address_info['EmpAddress']['emp_code'];?>' >
+	<br/>
+<span id="st" style="display:none">Remark (If any):* </span><span id="ts" style="">Remark (If any): </span>
+	<div id="dialog" title="Remark/Comment" style="display:block">
+
+		<textarea id="remark" name="remark" border='0' > </textarea>
+		<div class="ui-widget" id="errdis" style="display:none">
+		    <div class="ui-state-error ui-corner-all" style="margin-top: px; padding: 0pt 9em; margin-left: 0px;">
+		    <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+		    <strong></strong> Please write rejection reason.</p>
+		    </div>
+		</div>
+
+	</div>
+         <?php echo $this->Form->submit('SAVE', array( 'onClick' => 'return checkSubmit()','name' => 'data[Address][save]','class'=>'md-btn md-btn-success')); ?>
+         <?php $this->Form->end(); ?>
+ </div>
+</div>
+</div>
+
+  </div>
+  </div>
+ </div>
+<script>
+function checkSubmit()
+{
+var typeval = $("input[name='data[AddressWorkflow][type]']:checked").val();
+
+    if (typeval==4 && $.trim($("#remark").val()) == '')
+    {
+        alert("Please enter reject reason.");
+        return false;
+    } else if (typeval!=4 && typeval!=5 ){
+	alert("Please approve/reject.");
+        return false;
+}else{
+        return true;
+    }
+}
+function displaytype()
+{
+    var typeval = $("input[name='data[AddressWorkflow][type]']:checked").val();
+    if (typeval == 4)
+    {
+        
+        $("#st").css('display', 'block');
+$("#ts").css('display', 'none');
+       
+    } else if (typeval == 5)
+    {
+$("#ts").css('display', 'block');
+      $("#st").css('display', 'none');
+    } 
+}
+</script>

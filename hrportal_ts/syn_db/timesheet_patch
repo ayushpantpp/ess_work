@@ -1,0 +1,192 @@
+create table hd_costing_sheet
+(
+ vc_comp_code varchar(5 ) not null,
+ vc_sno varchar(10 ) not null,
+ nu_cust_code int(20) not null,
+ nu_proj_value int(20),
+ nu_init_cost int(20),
+ nu_proj_diff int(20),
+ nu_man_cost int(20),
+ nu_budg_eff int(20),
+ nu_tot_elap_mnth int(20),
+ nu_sign_off_per int(20),
+ nu_bill_amt int(20),
+ nu_real_amt int(20),
+ nu_due_amt int(20),
+ nu_delay_person_days int(20),
+ nu_cost_act_diff int(20),
+ nu_bal_mm int(20),
+ nu_bal_wrk int(20),
+ nu_delay_days int(20),
+ nu_proj_prof int(20),
+ nu_tot_exp_cost int(20),
+ nu_actprof_prjval_acost int(20),
+ nu_actprof_prjval_ralcost int(20),
+ nu_tot_all_wrk int(20),
+ nu_tot_budg_dys int(20),
+ nu_tot_budg_dys_cost int(20),
+ nu_gdtot_budg_per_dys int(20),
+ nu_gdtot_budg_dys_cost int(20),
+ nu_gdtot_act_mn_days int(20),
+ nu_gdtot_act_cost int(20),
+ nu_gdtot_exp_mn_rel int(20),
+ nu_gdtot_exp_rel_ag_dl int(20),
+ nu_gdtot_exp_rel int(20),
+ nu_gdtot_act_rel int(20),
+ nu_gdtot_acrel_exprel int(20),
+ nu_gdtot_acrel_bdgcst int(20),
+ nu_gdtot_bdcst_accst int(20),
+ nu_gdtot_acrel_accst int(20),
+ nu_project_id int(20),
+ vc_project_email varchar(50 )
+);
+
+
+create table dt_costing_sheet
+(
+ vc_comp_code varchar(5 ) not null,
+ vc_sno varchar(10 ) not null,
+ vc_dsno varchar(10 ) not null,
+ dt_pl_st_date date,
+ dt_pl_ed_date date,
+ dt_ac_st_date date,
+ dt_ac_ed_date date,
+ nu_delay int(20),
+ vc_activity varchar(2000 ),
+ nu_per_wrk int(20),
+ ch_tsk_cmpl char(1 ),
+ nu_bud_man int(20),
+ nu_bud_man_cost int(20),
+ nu_act_man int(20),
+ nu_act_cost int(20),
+ nu_exp_amt_rl int(20),
+ ch_due char(1 ),
+ nu_exp_amt_ag_dl int(20),
+ ch_due1 char(1 ),
+ nu_tot_exp_rl int(20),
+ nu_tot_ac_rl int(20),
+ nu_tot_acrl_exprl int(20),
+ nu_tot_acrl_bgcst int(20),
+ nu_tot_bgcst_accst int(20),
+ nu_tot_acrl_accst int(20),
+ vc_order varchar(25 ),
+ rl_due_flg char(1 ),
+ ag_dl_due_flg char(1 ),
+ dt_due_date date,
+ dt_due_date1 date,
+ vc_due_currency varchar(4 ),
+ vc_due_currency1 varchar(4 ),
+ nu_cont_milecode int(20),
+ dt_revised_date date,
+ dt_collection_date date,
+ vc_milestone_status varchar(2 ) default 1
+);
+
+
+
+CREATE TABLE `primary_milestone` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `created_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `primary_milestone`
+--
+
+INSERT INTO `primary_milestone` (`id`, `name`, `created_date`) VALUES
+(2, 'bug identification & reporting', '2018-01-12'),
+(3, 'delivery follow up with peg', '2018-01-12'),
+(4, 'testing', '2018-01-12'),
+(5, 'development', '2018-01-12'),
+(6, 'meeting with the client', '2018-01-12'),
+(7, 'internal meeting/project reviews', '2018-01-12'),
+(8, 'on-site activity', '2018-01-12'),
+(9, 'off-site activity', '2018-01-12'),
+(10, 'project management activity', '2018-01-12'),
+(11, 'collection tracking', '2018-01-12'),
+(12, 'training/handholding', '2018-01-12');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `primary_milestone`
+--
+ALTER TABLE `primary_milestone`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `primary_milestone`
+--
+ALTER TABLE `primary_milestone`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE `mst_timesheet` (
+  `vc_region` varchar(10) DEFAULT NULL,
+  `vc_emp_id` varchar(50) DEFAULT NULL,
+  `dt_start_date` date DEFAULT NULL,
+  `dt_end_date` date DEFAULT NULL,
+  `s_no` varchar(50) DEFAULT NULL,
+  `vc_tot_hrs` varchar(20) DEFAULT NULL,
+  `vc_tot_frms` varchar(20) DEFAULT NULL,
+  `vc_tot_reps` varchar(20) DEFAULT NULL,
+  `dt_applied` date DEFAULT NULL,
+  `vc_status` varchar(1) DEFAULT NULL,
+  `vc_ts_status` varchar(2) DEFAULT NULL,
+  `dt_approved` date DEFAULT NULL,
+  `vc_approved_code` varchar(20) DEFAULT NULL,
+  `vc_reject` varchar(1000) DEFAULT NULL,
+  `vc_forward_remarks` varchar(2000) DEFAULT NULL,
+  `vc_forward_manager` varchar(100) DEFAULT NULL,
+  `dt_forward_date` date DEFAULT NULL,
+  `vc_forwarded_to_mgr` varchar(50) DEFAULT NULL,
+  `vc_cur_mgr_id` varchar(50) DEFAULT NULL,
+  `id` int(50) NOT NULL,
+  `timesheet_id` int(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `dt_timesheet` (
+  `s_no` int(50) DEFAULT NULL,
+  `vc_emp_id` varchar(50) DEFAULT NULL,
+  `dt_wk_date` date DEFAULT NULL,
+  `vc_strt_time` varchar(100) DEFAULT NULL,
+  `vc_end_time` varchar(100) DEFAULT NULL,
+  `vc_hrs` varchar(10) DEFAULT NULL,
+  `vc_module` varchar(200) DEFAULT NULL,
+  `vc_remarks` varchar(2000) DEFAULT NULL,
+  `vc_file_name` varchar(1000) DEFAULT NULL,
+  `vc_f_r` varchar(20) DEFAULT NULL,
+  `nu_customer_no` int(10) DEFAULT NULL,
+  `vc_customer_name` varchar(250) DEFAULT NULL,
+  `vc_cm_code` varchar(10) DEFAULT NULL,
+  `vc_pm_code` varchar(10) DEFAULT NULL,
+  `vc_milestone_id` varchar(200) DEFAULT NULL,
+  `vc_leave` varchar(50) DEFAULT NULL,
+  `vc_mmpid` varchar(10) DEFAULT NULL,
+  `vc_subproject` varchar(100) DEFAULT NULL,
+  `vc_comp_code` varchar(2) DEFAULT NULL,
+  `tms_id` varchar(20) DEFAULT NULL,
+  `tms_customer` varchar(200) DEFAULT NULL,
+  `dt_saved` timestamp(6) NULL DEFAULT NULL,
+  `changed_date` date DEFAULT NULL,
+  `bt_type` varchar(40) DEFAULT NULL,
+  `primary_milestone_id` int(10) DEFAULT NULL,
+  `id` int(50) NOT NULL,
+  `mst_timesheet_id` int(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `applications` (`id`, `vc_application_name`, `usr_id_create`, `usr_id_create_dt`, `usr_id_mod`, `usd_id_mod_dt`, `wf_status`, `solc_id`, `cld_id`, `ho_org_id`, `org_id`, `emp_doc_id`, `doc_id`) VALUES (NULL, 'Timesheet Management', '1', '2016-12-13 03:28:24', NULL, NULL, '1', NULL, '0000', '01', '01', NULL, NULL);
+INSERT INTO `admin_options` (`id`, `name`, `value`, `description`, `sloc_id`, `cloud_id`, `ho_id`, `ho_org_id`) VALUES (NULL, 'timesheet', '1', 'Timesheet', NULL, NULL, NULL, NULL);
+INSERT INTO `admin_option_org` (`id`, `admin_options_id`, `org_id`, `status`) VALUES (NULL, '26', '01', '1');
+
+ALTER TABLE `survey_record` CHANGE `date` `date` DATE NOT NULL;

@@ -1,0 +1,219 @@
+<?php $auth = $this->Session->read('Auth'); ?>
+<style>
+    .uk-dropdown, .uk-dropdown-blank {
+        width: auto !important;
+    }
+</style>
+<div id="page_content" role="main">
+    <div id="page_content_inner">
+        <h3 class="heading_b uk-margin-bottom">Income Tax Declaration Form</h3>
+<?php echo $flash = $this->Session->flash();
+?>
+        <div id="alerts"></div>
+        <div class="md-card">
+            <div class="md-card-content large-padding">
+        <?php echo $this->Form->create('IncomeTax', array('url' => array('controller' => 'income_tax', 'action' => 'editsaveinfo'), 'id' => 'add', 'name' => 'voucher', 'class' => 'uk-form-stacked')); ?>
+
+                <div class="md-card-content" data-uk-grid-margin>
+                    <div class="uk-overflow-container" role="main">
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="clearfix"></div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel">
+
+                                    <div class="uk-grid">
+                                        <div class="uk-width-medium-1-2">
+                                        </div>
+                                        <div class="uk-width-medium-1-2">
+                                            <div class="parsley-row">
+                                        <!-- <select  name="fy_year">
+<?php 
+
+
+
+foreach ($financial as $k => $val) { ?>    
+                                                <option value=<?php echo $k ?>><?php echo $val; ?></option>
+<?php } ?>
+                                        </select> -->
+                                                <select class="md-input" name="loc_type">
+                                                    <option value="N" <?php if ($empinvestid_loc == 'N') {
+    echo 'selected';
+} ?>>Non Metro</option>
+                                                    <option value="M" <?php if ($empinvestid_loc == 'M') {
+    echo 'selected';
+} ?>> Metro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="x_content">
+
+                                        <table class="uk-table uk-text-nowrap table table-striped responsive-utilities jambo_table bulk_action" id = "myTable">
+                                            <thead>
+                                                <tr style="background: rgb(51, 153, 255) none repeat scroll 0px 0px;">  
+                                                    <th style="color: #fff">Particulars</th>
+                                                    <th style="color: #fff">Limit</th>
+                                                    <th style="color: #fff">Planned Amount</th>
+                                                    <th style="color: #fff">Actual Amount</th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody id='mytbody'>
+
+                                                <?php $i = 0;
+                                                foreach ($investment as $invest) { ?>
+                                                    <tr >
+                                                        <td><span style="font-weight:bold"><?php echo $invest['op2']['name'] ?></span></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+    <?php $section = $this->Common->sectionname($invest['SectDtl']['sect_id']) ?>
+                                                    <tr> <td ><?php echo '<span style="font-weight:bold">' . $section['OptionAttribute']['name'] . '</span>' ?></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <?php $invest_id = $this->Common->findsection($invest['SectDtl']['sect_id'], $invest['SectDtl']['fy_id']);
+                                                            
+                                                        
+                                                            ?>
+                                                    <?php foreach ($invest_id as $invest_id) {
+                                                        $name = $this->Common->findInvestName($invest_id['InvestDtl']['invest_id']);
+                                                        ?>
+
+                                                        <tr > <td>
+                                                                <?php
+                                                                if ($invest_id['InvestDtl']['hover_description'] != '') {
+                                                                    ?>
+                                                                    <div data-uk-dropdown="" class="uk-button-dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <span style="font-weight:bold"><?php echo $name['OptionAttribute']['name']; ?><i class="material-icons"></i></span>
+                                                                        <div class="uk-dropdown uk-dropdown-bottom" style="min-width: 200px; top: 35px; left: 0px;">
+                                                                    <?php echo $invest_id['InvestDtl']['hover_description']; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <?php
+                                                                } else {
+                                                                    echo '<span style="font-weight:bold">' . $name['OptionAttribute']['name'] . '</span>';
+                                                                }
+                                                                ?>
+        <?php echo $this->Form->input('Investment_' . $i, array('id' => 'toggleSwitch_j', 'value' => $invest_id['InvestDtl']['invest_id'], 'type' => 'hidden', 'class' => 'required expenseTest', 'MAXLENGTH' => '20', 'autocomplete' => 'off')); ?>   
+
+                                                            </td>
+                                                            <td><?php echo $invest_id['InvestDtl']['invest_max_limit']; ?></td> 
+                                                            <?php
+                                                            $amt = $this->Common->getInvestAmt($empinvestid, $invest_id['InvestDtl']['invest_id']);
+                                                              // echo '<pre>';print_r($invest_id['InvestDtl']['invest_id']);
+//die;
+                                                            if ($amt != 0) {
+                                                                ?>
+                                                        <input type='hidden' value='<?php echo $empinvestid; ?>' name='lastempinvest'  >
+                                                        <?php echo $this->Form->input('empinvest_' . $i, array('id' => "empinvest__$i", 'class' => 'required', 'value' => $amt['EmpInvestDtl']['id'], 'label' => false, 'type' => 'hidden')); ?>
+                                                        <td><?php echo $this->Form->input('planned_' . $i, array('id' => "planned_$i", 'class' => 'md-input required planned', 'value' => $amt['EmpInvestDtl']['invest_amt'], 'label' => false, 'type' => 'text', 'autocomplete' => 'off', 'readonly' => 'readonly')); ?><span id="errmsg_<?php echo $i ?>"></span></td> 
+                                                        <td><?php echo $this->Form->input('actual_' . $i, array('id' => "actual_$i", 'class' => 'md-input required actual', 'value' => $amt['EmpInvestDtl']['actual_amt'], 'label' => false, 'type' => 'text', 'autocomplete' => 'off')); ?><span id="errmsgs_<?php echo $i ?>"></span></td> 
+                                                    <?php } else { ?>
+                                                        <td><?php echo $this->Form->input('planned_' . $i, array('id' => "planned_$i", 'class' => 'md-input required planned', 'label' => false, 'type' => 'text', 'autocomplete' => 'off', 'readonly' => 'readonly')); ?><span id="errmsg_<?php echo $i ?>"></span></td> 
+                                                        <td><?php echo $this->Form->input('actual_' . $i, array('id' => "actual_$i", 'class' => 'md-input required actual', 'label' => false, 'type' => 'text', 'autocomplete' => 'off')); ?><span id="errmsgs_<?php echo $i ?>"></span></td> 
+                                                    <?php } ?>
+
+                                                    </tr> 
+
+                                                    <?php $i++;
+                                                } ?>
+
+
+<?php } ?>
+                                            </tbody>
+                                        </table>     
+                                    </div>
+                                    <div class="ln_solid"></div>   
+                                    <div class='uk-grid'> 
+<?php $fwemplist = $this->Common->getHrList($auth['MyProfile']['emp_code']); ?>
+<?php echo $this->Form->input('forwardlvl', array('type' => 'hidden', 'label' => false, 'options' => $fwemplist, 'class' => ' form-control s-form-item s-form-all', 'id' => 'fwlvempcode')); ?>  
+
+                                        <div class="uk-width-medium-1-6 uk-margin-top">
+                                            <input type="submit" class="md-btn md-btn-success btn btn-danger" value="Save" name='post_travel' onclick='return post();'>  
+                                        </div>
+                                        <div class="uk-width-medium-1-6 uk-margin-top">    
+                                            <a class="md-btn btn btn-primary" href="<?php echo $this->webroot; ?>income_tax/view/" title="Click to Cancel.">Cancel</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+
+<?php $this->Form->end(); ?> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        //called when key is pressed in textbox
+
+    });
+    function changetext(id) {
+
+     
+        $("#actual_" + id).on("keydown", function (e) {
+            console.log(e.which);
+            if (e.which !== 8 && e.which !== 9 && e.which !== 16 && e.which !== 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                $("#errmsgs_" + id).html("Digits Only").show();
+                return false;
+            } else {
+                $("#errmsgs_" + id).html("").show();
+                return true;
+            }
+        });
+
+    }
+    function bigImg(x) {
+        $("#toggleSwitch_j_" + x).hover(
+                function () {
+                    $("#theBox_" + x).slideDown(500);
+                }, function () {
+            $("#theBox_" + x).slideUp(500);
+        });
+    }
+
+    function post()
+    {
+        var pattern = /^\d+$/;
+        var arr = [];
+       
+
+        $(".actual").each(function (index) {
+            //alert(index);
+            if ($("#actual_" + index).val() !== '' && !pattern.test($("#actual_" + index).val())) {
+                //display error message
+                $("#errmsgs_" + index).html("Digits Only").show();
+                 arr[index]= '1';
+                //return false;
+            } else {
+                $("#errmsgs_" + index).html("").hide();
+                 arr[index]= '2';
+                //return true;
+            }
+        });
+        //alert(arr+"lll");
+        //return false;
+        if (jQuery.inArray( '1', arr )!== -1){
+           return false;
+        }else{
+            document.voucher.action = "<?php echo Router::url('/', true) ; ?>income_tax/editsaveinfo";
+            document.voucher.submit();
+            return true;
+        }
+        // Submit the page
+    }
+</script>
+
